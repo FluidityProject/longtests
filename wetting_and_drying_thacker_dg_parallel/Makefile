@@ -7,6 +7,6 @@ input: clean
 
 clean:
 	rm -f *.halo *.poly *vtu *.s *.d.1 *.stat *.msh *.detectors matrixdump* *.pdf *.dat *.pyc *.err-* *.log-*
-	rm -R thacker_B_d0=1.0_*
+	rm -rf thacker_B_d0=1.0_*
 	#cd mesh; rm -f  *.ele *.edge *.node *.poly *.vtu *.s *.d.1 *.stat *.detectors matrixdump* 
 	rm -rf *flredecomp*
