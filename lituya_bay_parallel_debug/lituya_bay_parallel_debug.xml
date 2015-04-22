@@ -106,7 +106,7 @@ assert abs(mnvfracwater) &lt; 1e-10
 assert abs(mxvfracwater-1.0) &lt; 1e-10
     </test>
     <test name="check minimum droplet volume fraction is 0.0" language="python">
-assert abs(mnvfracdrop) &lt; 5e-10
+assert abs(mnvfracdrop) &lt; 1e-6
     </test>
     <test name="check maximum droplet volume fraction is 1.0" language="python">
 assert abs(mxvfracdrop-1.0) &lt; 1e-10
