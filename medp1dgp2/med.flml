@@ -157,10 +157,10 @@
       <time_units date="seconds since 1987-01-05 00:00.0"/>
     </current_time>
     <timestep>
-      <real_value rank="0">1000.0</real_value>
+      <real_value rank="0">750.0</real_value>
     </timestep>
     <finish_time>
-      <real_value rank="0">10000.0</real_value>
+      <real_value rank="0">20000.0</real_value>
     </finish_time>
     <nonlinear_iterations>
       <integer_value rank="0">2</integer_value>
@@ -304,15 +304,21 @@
         <spatial_discretisation>
           <discontinuous_galerkin>
             <viscosity_scheme>
-              <bassi_rebay/>
+              <compact_discontinuous_galerkin/>
               <tensor_form/>
             </viscosity_scheme>
             <advection_scheme>
               <upwind/>
+              <project_velocity_to_continuous>
+                <mesh name="CoordinateMesh"/>
+              </project_velocity_to_continuous>
               <integrate_advection_by_parts>
                 <twice/>
               </integrate_advection_by_parts>
             </advection_scheme>
+            <buoyancy>
+              <radial_gravity_direction_at_gauss_points/>
+            </buoyancy>
           </discontinuous_galerkin>
           <conservative_advection>
             <real_value rank="0">0.0</real_value>
@@ -320,11 +326,16 @@
         </spatial_discretisation>
         <temporal_discretisation>
           <theta>
-            <real_value rank="0">0.5</real_value>
+            <real_value rank="0">0.53</real_value>
           </theta>
           <relaxation>
             <real_value rank="0">1.0</real_value>
           </relaxation>
+          <discontinuous_galerkin>
+            <maximum_courant_number_per_subcycle>
+              <real_value rank="0">0.2</real_value>
+            </maximum_courant_number_per_subcycle>
+          </discontinuous_galerkin>
         </temporal_discretisation>
         <solver>
           <iterative_method name="gmres">
@@ -334,13 +345,13 @@
           </iterative_method>
           <preconditioner name="sor"/>
           <relative_error>
-            <real_value rank="0">1.0e-8</real_value>
+            <real_value rank="0">1.0e-7</real_value>
           </relative_error>
           <absolute_error>
             <real_value rank="0">0.0</real_value>
           </absolute_error>
           <max_iterations>
-            <integer_value rank="0">10000</integer_value>
+            <integer_value rank="0">1000</integer_value>
           </max_iterations>
           <never_ignore_solver_failures/>
           <diagnostics>
@@ -392,9 +403,9 @@
    c = X[2]
    from math import sqrt, sin, cos, atan2, acos
    r=sqrt(a**2+b**2+c**2)
-   A1=500.0
+   A1=1000.0
    A2=A1
-   A3=1.0
+   A3=100.0
    phi=atan2(b,a)
    theta=acos(c/r)
    T11=A1*sin(phi)**2+A2*cos(theta)**2*cos(phi)**2+A3*sin(theta)**2*cos(phi)**2
@@ -480,7 +491,7 @@
         </spatial_discretisation>
         <temporal_discretisation>
           <theta>
-            <real_value rank="0">1.0</real_value>
+            <real_value rank="0">0.53</real_value>
           </theta>
           <control_volumes>
             <number_advection_iterations>
@@ -497,10 +508,10 @@
           </iterative_method>
           <preconditioner name="sor"/>
           <relative_error>
-            <real_value rank="0">1e-6</real_value>
+            <real_value rank="0">1e-7</real_value>
           </relative_error>
           <max_iterations>
-            <integer_value rank="0">10000</integer_value>
+            <integer_value rank="0">1000</integer_value>
           </max_iterations>
           <never_ignore_solver_failures/>
           <diagnostics>
@@ -519,7 +530,7 @@
     return T</string_value>
           </python>
         </initial_condition>
-        <boundary_conditions name="BulkFocringTemperature">
+        <boundary_conditions name="BulkForcingTemperature">
           <surface_ids>
             <integer_value shape="1" rank="1">33</integer_value>
           </surface_ids>
@@ -590,6 +601,23 @@
         </detectors>
       </prescribed>
     </scalar_field>
+    <scalar_field name="DG_CourantNumber" rank="0">
+      <diagnostic>
+        <algorithm name="Internal" material_phase_support="multiple"/>
+        <mesh name="VelocityMesh"/>
+        <output/>
+        <stat/>
+        <convergence>
+          <include_in_convergence/>
+        </convergence>
+        <detectors>
+          <include_in_detectors/>
+        </detectors>
+        <steady_state>
+          <include_in_steady_state/>
+        </steady_state>
+      </diagnostic>
+    </scalar_field>
   </material_phase>
   <ocean_forcing>
     <bulk_formulae>
@@ -597,7 +625,25 @@
         <type name="NCAR"/>
       </bulk_formulae>
       <input_file file_name="1987_raw.nc"/>
-      <output_fluxes_diagnostics/>
+      <output_fluxes_diagnostics>
+        <scalar_field name="HeatFlux" rank="0">
+          <diagnostic>
+            <algorithm name="Internal" material_phase_support="multiple"/>
+            <mesh name="VelocityMesh"/>
+            <output/>
+            <stat/>
+            <convergence>
+              <include_in_convergence/>
+            </convergence>
+            <detectors>
+              <include_in_detectors/>
+            </detectors>
+            <steady_state>
+              <include_in_steady_state/>
+            </steady_state>
+          </diagnostic>
+        </scalar_field>
+      </output_fluxes_diagnostics>
     </bulk_formulae>
   </ocean_forcing>
 </fluidity_options>
