@@ -72,11 +72,8 @@
       <real_value rank="0">0.002</real_value>
     </timestep>
     <finish_time>
-      <real_value rank="0">60.0</real_value>
+      <real_value rank="0">30.0</real_value>
     </finish_time>
-    <wall_time_limit>
-      <real_value rank="0">255600</real_value>
-    </wall_time_limit>
     <nonlinear_iterations>
       <integer_value rank="0">2</integer_value>
       <tolerance>

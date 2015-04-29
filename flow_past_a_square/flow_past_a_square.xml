@@ -24,8 +24,8 @@ time=s["ElapsedTime"]["value"]
     
     <variable name="positions" language="python">
 import vtktools
-# The 240th dump corresponds to 60 seconds of simulation time.
-file = vtktools.vtu('flow_past_a_square_240.pvtu')
+# The 120th dump corresponds to 30 seconds of simulation time.
+file = vtktools.vtu('flow_past_a_square_120.pvtu')
 file.GetFieldNames()
 p = file.GetLocations()
 positions = p[:,0]
@@ -39,16 +39,16 @@ solvers_converged = not "matrixdump" in files and not "matrixdump.info" in files
   </variables>
     
   <pass_tests>
-    <test name="Final time is 60 seconds" language="python">
-assert abs(time[-1]-60.0) &lt; 1.0e-7
+    <test name="Final time is 30 seconds" language="python">
+assert abs(time[-1]-30.0) &lt; 1.0e-7
     </test>
     
-    <test name="After 60 seconds, normalised stream-wise time-averaged velocity agrees with experimental results." language="python">
+    <test name="After 30 seconds, normalised stream-wise time-averaged velocity agrees with experimental results." language="python">
 import vtktools
 import numpy
 
-# The 240th dump corresponds to 60 seconds of simulation time.
-filename='flow_past_a_square_240.pvtu'
+# The 120th dump corresponds to 30 seconds of simulation time.
+filename='flow_past_a_square_120.pvtu'
 vt=vtktools.vtu(filename)
 
 # Dimensions
