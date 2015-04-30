@@ -98,8 +98,8 @@ assert abs (  (MaximumGeostrophicPressure - MinimumGeostrophicPressure)- 0.098 )
     <test name="Check final number of nodes within 2000 of the previous number" language="python">
 assert abs ( FinalNodeCount - 14256.0 ) &lt; 2000.0
     </test>
-    <test name="Check ElapsedWallTime is within 5 mins (approx 18%) of the previous timing" language="python">
-assert abs ( ElapsedWallTime - 1950.0 ) &lt; 300.0
+    <test name="Check ElapsedWallTime is within an hour of the previous timing" language="python">
+assert abs ( ElapsedWallTime - 1950.0 ) &lt; 3600.0
     </test>
   </pass_tests>
 
