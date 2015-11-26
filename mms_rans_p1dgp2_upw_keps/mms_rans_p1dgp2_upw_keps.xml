@@ -4,7 +4,7 @@
   <name>p1dgp2 RANS k-epsilon spatial convergence test with weak bcs</name>
   <owner userid="ffm10"/>
   <tags>flml</tags>
-  <problem_definition length="medium" nprocs="1">
+  <problem_definition length="long" nprocs="1">
     <command_line>fluidity -v3 MMS_A.flml &gt; MMS_A.log; fluidity -v3 MMS_B.flml &gt; MMS_B.log; fluidity -v3 MMS_C.flml &gt; MMS_C.log; fluidity -v3 MMS_D.flml &gt; MMS_D.log</command_line>
   </problem_definition>
   <variables>
