@@ -142,7 +142,7 @@
             <les_model>
               <second_order>
                 <smagorinsky_coefficient>
-                  <real_value rank="0">0.164</real_value>
+                  <real_value rank="0">0.165</real_value>
                 </smagorinsky_coefficient>
                 <length_scale_type>scalar</length_scale_type>
                 <tensor_field name="EddyViscosity" rank="2">
