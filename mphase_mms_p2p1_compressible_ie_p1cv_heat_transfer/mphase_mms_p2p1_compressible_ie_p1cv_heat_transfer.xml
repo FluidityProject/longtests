@@ -126,17 +126,17 @@ assert(convergence[0] &gt; 1.65)
     <test name="velocity (of Particle phase) convergence order > 1.7" language="python">
 assert(convergence[1] &gt; 1.7)
     </test>
-    <test name="pressure convergence order > 1.75" language="python">
-assert(convergence[2] &gt; 1.75)
+    <test name="pressure convergence order > 1.4" language="python">
+assert(convergence[2] &gt; 1.4)
     </test>
-    <test name="ie (of Fluid phase) convergence order > 1.7" language="python">
-assert(convergence[3] &gt; 1.7)
+    <test name="ie (of Fluid phase) convergence order > 1.3" language="python">
+assert(convergence[3] &gt; 1.3)
     </test>
-    <test name="density (of Fluid phase) convergence order > 1.8" language="python">
-assert(convergence[4] &gt; 1.8)
+    <test name="density (of Fluid phase) convergence order > 1.7" language="python">
+assert(convergence[4] &gt; 1.7)
     </test>
-    <test name="ie (of Particle phase) convergence order > 1.3" language="python">
-assert(convergence[5] &gt; 1.3)
+    <test name="ie (of Particle phase) convergence order > 0.8" language="python">
+assert(convergence[5] &gt; 0.8)
     </test>
     <test name="checking A finished in less than 100 seconds" language="python">
 assert(a_finish_time-100.0 &lt; 1.E-10)
