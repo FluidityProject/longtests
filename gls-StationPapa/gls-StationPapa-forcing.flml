@@ -122,7 +122,7 @@
         <real_value rank="0">60.0</real_value>
       </minimum_timestep>
       <maximum_timestep>
-        <real_value rank="0">900</real_value>
+        <real_value rank="0">450</real_value>
       </maximum_timestep>
       <increase_tolerance>
         <real_value rank="0">1.1</real_value>
