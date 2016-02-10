@@ -5,7 +5,7 @@
   <owner userid="cwilson"/>
   <tags>flml</tags>
   <problem_definition length ="long" nprocs = "1">
-    <command_line>mpiexec fluidity -v0 explicit-hyperc-shear-input-conservative.flml &amp;&gt; forward.log &amp;&amp; mpiexec ./change_options_conservative.py &amp;&amp; mpiexec fluidity -v0 explicit-hyperc-shear-conservative_16_checkpoint.flml &amp;&gt; back.log </command_line>
+    <command_line>mpiexec fluidity -v0 explicit-hyperc-shear-input-conservative.flml &gt;forward.log 2&gt;&amp;1 || true &amp;&amp; mpiexec ./change_options_conservative.py &amp;&amp; mpiexec fluidity -v0 explicit-hyperc-shear-conservative_16_checkpoint.flml &gt;back.log 2&gt;&amp;1</command_line>
   </problem_definition>
   <variables>
     <variable name="error" language="python"> 
