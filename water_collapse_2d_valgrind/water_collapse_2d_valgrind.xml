@@ -5,7 +5,7 @@
   <name>water collapse 2d</name>
   <owner userid="skramer"/>
   <tags>flml</tags>
-    <problem_definition length="long" nprocs="1">
+    <problem_definition length="special" nprocs="1">
     <command_line>mpiexec valgrind --gen-suppressions=all --tool=memcheck --leak-check=full -v --log-file=valgrind.out --show-reachable=yes --num-callers=50 --error-limit=no --suppressions=fluidity.supp --leak-resolution=high fluidity -v2 -l water_collapse.flml</command_line>
   </problem_definition>
   <variables>  
