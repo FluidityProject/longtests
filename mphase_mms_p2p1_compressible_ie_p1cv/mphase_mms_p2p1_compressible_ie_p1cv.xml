@@ -5,7 +5,11 @@
   <owner userid="ctj10"/>
   <tags>flml</tags>
   <problem_definition length="long" nprocs="1">
-    <command_line>make run</command_line>
+    <command_line>
+      mpiexec fluidity -v3 -l MMS_A.flml
+      mpiexec fluidity -v3 -l MMS_B.flml
+      mpiexec fluidity -v3 -l MMS_C.flml
+      </command_line>
   </problem_definition>
   <variables>
     <variable name="solvers_converged" language="python">

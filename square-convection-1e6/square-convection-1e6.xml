@@ -4,13 +4,8 @@
   <name>Square convection (Ra=10^6 version)</name>
   <owner userid="rhodrid"/>
   <tags>flml</tags>
-<!--
-  <problem_definition length = "special" nprocs = "1">
-    <command_line>make clean-run-debug; fluidity -v2 -l square-convection.flml</command_line>
-  </problem_definition>
--->
   <problem_definition length = "long" nprocs = "2">
-    <command_line>make clean-run-debug;
+    <command_line>
 mpiexec ../../bin/flredecomp -i 1 -o 2 -v -l square-convection square-convection_flredecomp &amp;&amp;
 mpiexec fluidity -v2 -l square-convection_flredecomp.flml</command_line>
   </problem_definition>

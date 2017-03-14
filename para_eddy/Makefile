@@ -2,7 +2,7 @@ FLMLMODEL = Eddying_TestCase
 
 default: input
 
-input:
+input: clean
 	tar -xvjf src/InputCheckpoint.tar.bz2
 
 clean: clean-checkpoint clean-run-debug

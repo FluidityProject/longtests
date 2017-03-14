@@ -3,7 +3,7 @@ MESH = square
 
 default: input
 
-input:
+input: clean
 	tar -xvjf src/$(MESH).tar.bz2
 	../../bin/triangle2gmsh $(MESH)
 

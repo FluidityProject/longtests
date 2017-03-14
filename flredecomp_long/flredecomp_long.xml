@@ -5,7 +5,7 @@
   <owner userid="pfarrell"/>
   <tags>flml</tags>
   <problem_definition length = "long" nprocs = "7">
-    <command_line>make clean-run; mpiexec flredecomp -v -l -i 3 -o 7 CoarseCorner_1_checkpoint output7; mkdir flredecomp_out; mv flredecomp.err-* flredecomp.log-* flredecomp_out; mpiexec flredecomp -v -l -i 7 -o 4 output7 output4</command_line>
+    <command_line>mpiexec flredecomp -v -l -i 3 -o 7 CoarseCorner_1_checkpoint output7; mkdir flredecomp_out; mv flredecomp.err-* flredecomp.log-* flredecomp_out; mpiexec flredecomp -v -l -i 7 -o 4 output7 output4</command_line>
   </problem_definition>
   <variables>
     <variable name = "output7_meshes" language = "python">

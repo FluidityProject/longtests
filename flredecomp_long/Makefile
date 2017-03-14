@@ -1,4 +1,4 @@
-input:
+input: clean
 	# nothing to be done
 
 clean-run:

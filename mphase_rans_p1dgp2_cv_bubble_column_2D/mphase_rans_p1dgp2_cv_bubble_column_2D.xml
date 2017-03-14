@@ -4,7 +4,10 @@
   <owner userid="gb812"/>
   <tags>flml</tags>
   <problem_definition length="long" nprocs="4">
-    <command_line>make run</command_line>
+    <command_line>
+      mpiexec ../../bin/flredecomp -i 1 -o 4 mphase_rans_p1dgp2_cv_bubble_column_2D mphase_rans_p1dgp2_cv_bubble_column_2D_flredecomp
+      mpiexec ../../bin/fluidity -v2 -l mphase_rans_p1dgp2_cv_bubble_column_2D_flredecomp.flml
+      </command_line>
   </problem_definition>
   <variables>
     <variable name="time" language="python">from fluidity_tools import stat_parser

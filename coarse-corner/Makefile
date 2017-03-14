@@ -3,7 +3,7 @@ MESH = CoarseCorner
 
 default: input
 
-input: src/$(MESH).geo
+input: src/$(MESH).geo clean
 	gmsh -3 src/$(MESH).geo -o $(MESH).msh
 
 clean: clean-mesh clean-run-debug clean-checkpoint

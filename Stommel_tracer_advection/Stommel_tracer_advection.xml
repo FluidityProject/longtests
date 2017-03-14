@@ -4,7 +4,7 @@
 <!-- Calculate wave speed in sloshing deep water tank
   -->
 <testproblem>
-  <name>Stommel streamfunction tracer advection. Advect a passive scalar in a velocity field obtained from Stommel's straemfunciton, i.e. with a western boundary current which stretches the tracer field and makes the problem quite hard.</name>
+  <name>Stommel streamfunction tracer advection. Advect a passive scalar in a velocity field obtained from Stommel's streamfunciton, i.e. with a western boundary current which stretches the tracer field and makes the problem quite hard.</name>
   <owner userid="piggott"/>
   <tags>flml</tags>
   <problem_definition length="long" nprocs="1">

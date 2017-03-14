@@ -5,7 +5,7 @@
   <owner userid="bricheno"/>
   <tags>flml</tags>
   <problem_definition length = "long" nprocs = "4">
-    <command_line>make clean-run; mpiexec fluidity -v2 -l Eddying_TestCase.flml</command_line>
+    <command_line>mpiexec fluidity -v2 -l Eddying_TestCase.flml</command_line>
   </problem_definition>
   <variables>
     <variable name = "error_log_n_lines" language = "python">
