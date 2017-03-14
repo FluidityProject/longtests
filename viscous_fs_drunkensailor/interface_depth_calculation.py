@@ -23,7 +23,10 @@ def get_interface_depth(file):
   data = vtu.ugrid
   data.GetPointData().SetActiveScalars("Dense::MaterialVolumeFraction")
   contour = vtk.vtkContourFilter ()
-  contour.SetInput(data)
+  if vtk.vtkVersion.GetVTKMajorVersion() <= 5:
+    contour.SetInput(data)
+  else:
+    contour.SetInputData(data)
   contour.SetValue(0, 0.5)
   contour.Update()
   polydata = contour.GetOutput()

@@ -73,7 +73,10 @@ def get_water_runups(filelist, values, origin, normals, R0):
       cutdata = cutvtu.ugrid
       cutdata.GetPointData().SetActiveScalars("Water::MaterialVolumeFraction")
       cutcontour = vtk.vtkContourFilter()
-      cutcontour.SetInput(cutdata)
+      if vtk.vtkVersion.GetVTKMajorVersion() &lt;= 5:
+        cutcontour.SetInput(cutdata)
+      else:
+        cutcontour.SetInputData(cutdata)
       for val in range(len(values)):
         cutcontour.SetValue(0, values[val])
         cutcontour.Update()
