@@ -72,7 +72,6 @@ def get_head_speed(filelist, timdum=1.5):
       plane.SetNormal(0.0, 1.0, 0.0)
       cutter = vtk.vtkCutter()
       cutter.SetCutFunction(plane)
-      cutter.SetInput(data)
       if vtk.vtkVersion.GetVTKMajorVersion() &lt;= 5:
         cutter.SetInput(data)
       else:
