@@ -8,8 +8,8 @@
   <tags>flml</tags>
   
   <problem_definition length="long" nprocs="16">
-    <command_line>mpiexec ../../bin/flredecomp -i 1 -o 16 -v -l flow_past_a_square flow_past_a_square_flredecomp &amp;&amp;
-mpiexec ../../bin/fluidity flow_past_a_square_flredecomp.flml</command_line>
+    <command_line>mpiexec flredecomp -i 1 -o 16 -v -l flow_past_a_square flow_past_a_square_flredecomp &amp;&amp;
+mpiexec fluidity flow_past_a_square_flredecomp.flml</command_line>
     <!-- This is a 2D simulation of the flow past a "square cylinder". -->
     <!-- LES is used to model the turbulence. -->
     <!-- The numerical results are compared against the experimental results of Lyn and Rodi (1994). -->

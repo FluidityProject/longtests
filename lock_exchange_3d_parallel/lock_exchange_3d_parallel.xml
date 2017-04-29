@@ -6,7 +6,7 @@
   <owner userid="hhiester"/>
   <tags>flml</tags>
     <problem_definition length="long" nprocs="16">
-    <command_line>mpiexec ../../bin/flredecomp -i 1 -o 16 -v -l lock_exchange_3d_parallel lock_exchange_3d_parallel_flredecomp &amp;&amp;
+    <command_line>mpiexec flredecomp -i 1 -o 16 -v -l lock_exchange_3d_parallel lock_exchange_3d_parallel_flredecomp &amp;&amp;
 mpiexec fluidity -v3 -l lock_exchange_3d_parallel_flredecomp.flml</command_line>
   </problem_definition>  
   <variables> 

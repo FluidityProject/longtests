@@ -8,8 +8,8 @@
   <tags>flml</tags>
   
   <problem_definition length="long" nprocs="8">
-    <command_line>mpiexec ../../bin/flredecomp -i 1 -o 8 -v -l mphase_tephra_settling_2d_adaptive mphase_tephra_settling_2d_adaptive_flredecomp &amp;&amp;
-mpiexec ../../bin/fluidity -v2 -l mphase_tephra_settling_2d_adaptive_flredecomp.flml</command_line>
+    <command_line>mpiexec flredecomp -i 1 -o 8 -v -l mphase_tephra_settling_2d_adaptive mphase_tephra_settling_2d_adaptive_flredecomp &amp;&amp;
+mpiexec fluidity -v2 -l mphase_tephra_settling_2d_adaptive_flredecomp.flml</command_line>
     <!-- This is a 2D simulation of the formation of density currents, with mesh adaptivity enabled. -->
     <!-- We consider a body of water with a constant influx of (denser) tephra at the top boundary. -->
     <!-- Density currents/plumes should eventually form when the bulk density of the tephra-water mixture -->

@@ -6,7 +6,7 @@
   <tags>flml</tags>
   <problem_definition length = "long" nprocs = "4">
     <command_line>
-mpiexec ../../bin/flredecomp -i 1 -o 4 -v -l coarse-corner coarse-corner_flredecomp &amp;&amp;
+mpiexec flredecomp -i 1 -o 4 -v -l coarse-corner coarse-corner_flredecomp &amp;&amp;
 mpiexec fluidity -v2 -l coarse-corner_flredecomp.flml;
 cd checkpoint;
 cp -r ../$(MODEL)_*6_checkpoint* .

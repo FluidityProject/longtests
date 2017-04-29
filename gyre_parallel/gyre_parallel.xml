@@ -5,7 +5,7 @@
   <owner userid="skramer"/>
   <tags>flml</tags>
   <problem_definition length="long" nprocs="4">
-    <command_line>mpiexec ../../bin/flredecomp -i 1 -o 4 -v -l baroclinic_gyre_unstructured_res2_p1dgp2_cgsupg_NoSlipBottom_BR baroclinic_gyre_unstructured_res2_p1dgp2_cgsupg_NoSlipBottom_BR_flredecomp &amp;&amp;
+    <command_line>mpiexec flredecomp -i 1 -o 4 -v -l baroclinic_gyre_unstructured_res2_p1dgp2_cgsupg_NoSlipBottom_BR baroclinic_gyre_unstructured_res2_p1dgp2_cgsupg_NoSlipBottom_BR_flredecomp &amp;&amp;
 mpiexec fluidity -v2 -l baroclinic_gyre_unstructured_res2_p1dgp2_cgsupg_NoSlipBottom_BR_flredecomp.flml</command_line>
   </problem_definition>
   <variables>

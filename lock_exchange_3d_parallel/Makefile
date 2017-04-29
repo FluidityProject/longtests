@@ -2,7 +2,7 @@
 input: clean
 	cp src/mesh.zip .
 	unzip mesh.zip
-	../../bin/triangle2gmsh first_timestep_adapted_mesh
+	triangle2gmsh first_timestep_adapted_mesh
 
 clean: 
 	find . -name '*vtu' | xargs -n 10 rm -f

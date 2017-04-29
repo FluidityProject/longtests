@@ -7,10 +7,10 @@ input:	clean
 
 run:
 	@echo **********Running simulations
-	mpiexec ../../bin/fluidity -v2 -l MMS_A.flml &
-	mpiexec ../../bin/fluidity -v2 -l MMS_B.flml &
-	mpiexec ../../bin/fluidity -v2 -l MMS_C.flml &
-	mpiexec ../../bin/fluidity -v2 -l MMS_D.flml 
+	mpiexec fluidity -v2 -l MMS_A.flml &
+	mpiexec fluidity -v2 -l MMS_B.flml &
+	mpiexec fluidity -v2 -l MMS_C.flml &
+	mpiexec fluidity -v2 -l MMS_D.flml 
 
 clean:
 	rm -f *.vtu *.stat *.s *.log *_A* *_B* *_C* *_D* src/*A.* src/*B.* src/*C.* src/*D.* matrix* *~ mms_rans_p2p1_keps.py *.pyc

@@ -6,7 +6,7 @@
   <owner userid="piggott"/>
   <tags>flml</tags>
   <problem_definition length="long" nprocs="8">
-    <command_line>mpiexec ../../bin/flredecomp -i 1 -o 8 -v -l oodc-unstructured-parallel oodc-unstructured-parallel_flredecomp &amp;&amp;
+    <command_line>mpiexec flredecomp -i 1 -o 8 -v -l oodc-unstructured-parallel oodc-unstructured-parallel_flredecomp &amp;&amp;
 mpiexec fluidity -v3 -l oodc-unstructured-parallel_flredecomp.flml</command_line>
   </problem_definition>
   <variables>

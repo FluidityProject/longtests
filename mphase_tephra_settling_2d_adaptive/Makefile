@@ -4,8 +4,8 @@ preprocess:
 
 run:
 	@echo **********Running simulation
-	mpiexec -n 8 ../../bin/flredecomp -i 1 -o 8 -v -l mphase_tephra_settling_2d_adaptive mphase_tephra_settling_2d_adaptive_flredecomp
-	mpiexec -n 8 ../../bin/fluidity -v2 -l mphase_tephra_settling_2d_adaptive_flredecomp.flml
+	mpiexec -n 8 flredecomp -i 1 -o 8 -v -l mphase_tephra_settling_2d_adaptive mphase_tephra_settling_2d_adaptive_flredecomp
+	mpiexec -n 8 fluidity -v2 -l mphase_tephra_settling_2d_adaptive_flredecomp.flml
 
 input: clean preprocess
 

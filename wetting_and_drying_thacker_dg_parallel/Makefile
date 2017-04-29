@@ -1,5 +1,5 @@
 all: input
-	mpiexec ../../bin/flredecomp -i 1 -o 4 -v -l thacker_B_d0=1.0 thacker_B_d0=1.0_flredecomp
+	mpiexec flredecomp -i 1 -o 4 -v -l thacker_B_d0=1.0 thacker_B_d0=1.0_flredecomp
 	mpiexec -n 4 fluidity -v5 thacker_B_d0=1.0_flredecomp.flml &> output.txt
 
 input: clean

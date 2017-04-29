@@ -8,8 +8,8 @@
   <tags>flml</tags>
   
   <problem_definition length="long" nprocs="8">
-    <command_line>mpiexec ../../bin/flredecomp -i 1 -o 8 -v -l mphase_tephra_settling_salinity mphase_tephra_settling_salinity_flredecomp &amp;&amp;
-mpiexec ../../bin/fluidity -v2 -l mphase_tephra_settling_salinity_flredecomp.flml</command_line>
+    <command_line>mpiexec flredecomp -i 1 -o 8 -v -l mphase_tephra_settling_salinity mphase_tephra_settling_salinity_flredecomp &amp;&amp;
+mpiexec fluidity -v2 -l mphase_tephra_settling_salinity_flredecomp.flml</command_line>
     <!-- This is a 2D simulation of the formation of density currents in a body of water with a salinity gradient. -->
     <!-- A constant influx of tephra (with d = 62e-6 metres) is delivered along the top boundary. -->
     <!-- Due to the high flux rate of 22.7 g/cm^2/hr, density currents/plumes should eventually almost immediately -->

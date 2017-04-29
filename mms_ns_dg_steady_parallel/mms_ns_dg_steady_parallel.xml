@@ -5,13 +5,13 @@
   <owner userid="cwilson"/>
   <tags>flml</tags>
   <problem_definition length="long" nprocs="2">
-    <command_line>mpiexec ../../bin/flredecomp -i 1 -o 2 -v -l MMS_A MMS_A_flredecomp &amp;&amp;
+    <command_line>mpiexec flredecomp -i 1 -o 2 -v -l MMS_A MMS_A_flredecomp &amp;&amp;
 mpiexec fluidity -v2 -l MMS_A_flredecomp.flml &amp;&amp;
-mpiexec ../../bin/flredecomp -i 1 -o 2 -v -l MMS_B MMS_B_flredecomp &amp;&amp;
+mpiexec flredecomp -i 1 -o 2 -v -l MMS_B MMS_B_flredecomp &amp;&amp;
 mpiexec fluidity -v2 -l MMS_B_flredecomp.flml &amp;&amp;
-mpiexec ../../bin/flredecomp -i 1 -o 2 -v -l MMS_C MMS_C_flredecomp &amp;&amp;
+mpiexec flredecomp -i 1 -o 2 -v -l MMS_C MMS_C_flredecomp &amp;&amp;
 mpiexec fluidity -v2 -l MMS_C_flredecomp.flml &amp;&amp;
-mpiexec ../../bin/flredecomp -i 1 -o 2 -v -l MMS_D MMS_D_flredecomp &amp;&amp;
+mpiexec flredecomp -i 1 -o 2 -v -l MMS_D MMS_D_flredecomp &amp;&amp;
 mpiexec fluidity -v2 -l MMS_D_flredecomp.flml</command_line> 
   </problem_definition>
   <variables>

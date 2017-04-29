@@ -4,7 +4,7 @@
   <owner userid="sf1409"/>
   <tags> parallel </tags>
   <problem_definition length="long" nprocs="4">
-    <command_line>mpiexec ../../bin/flredecomp -i 1 -o 4 -v -l thacker_B_d0=1.0 thacker_B_d0=1.0_flredecomp &amp;&amp;
+    <command_line>mpiexec flredecomp -i 1 -o 4 -v -l thacker_B_d0=1.0 thacker_B_d0=1.0_flredecomp &amp;&amp;
 mpiexec fluidity thacker_B_d0=1.0_flredecomp.flml</command_line>
   </problem_definition>
   <variables>

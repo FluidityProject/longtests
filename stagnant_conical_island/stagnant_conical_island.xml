@@ -4,7 +4,7 @@
   <owner userid="cwilson"/>
   <tags>zoltan</tags>
   <problem_definition length="long" nprocs="3">
-    <command_line>mpiexec ../../bin/flredecomp -i 1 -o 3 -v -l conical_island conical_island_flredecomp &amp;&amp;
+    <command_line>mpiexec flredecomp -i 1 -o 3 -v -l conical_island conical_island_flredecomp &amp;&amp;
 mpiexec fluidity -v2 -l conical_island_flredecomp.flml</command_line>
   </problem_definition>
   <variables>

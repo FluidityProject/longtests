@@ -4,8 +4,8 @@ preprocess:
 
 run:
 	@echo **********Running simulation
-	mpiexec -n 8 ../../bin/flredecomp -i 1 -o 8 -v -l mphase_tephra_settling_3d mphase_tephra_settling_3d_flredecomp
-	mpiexec -n 8 ../../bin/fluidity -v2 -l mphase_tephra_settling_3d_flredecomp.flml
+	mpiexec -n 8 flredecomp -i 1 -o 8 -v -l mphase_tephra_settling_3d mphase_tephra_settling_3d_flredecomp
+	mpiexec -n 8 fluidity -v2 -l mphase_tephra_settling_3d_flredecomp.flml
 
 input: clean preprocess
 

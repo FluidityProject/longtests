@@ -6,10 +6,10 @@ TESTPYTHON=${TESTPYTHONPATH}${TESTPYTHONLOCAL}
 TESTBINFLUIDITY=$(shell which fluidity >/dev/null ; echo $$?)
 TESTBINFLREDECOMP=$(shell which flredecomp >/dev/null ; echo $$?)
 
-TESTBINFLUIDITYLOCAL=$(shell test -x ../../bin/fluidity >/dev/null ; echo $$?)
-TESTBINFLREDECOMPLOCAL=$(shell test -x ../../bin/flredecomp >/dev/null ; echo $$?)
+TESTBINFLUIDITYLOCAL=$(shell test -x fluidity >/dev/null ; echo $$?)
+TESTBINFLREDECOMPLOCAL=$(shell test -x flredecomp >/dev/null ; echo $$?)
 
-BINPREFIX=$(shell test -x ../../bin/fluidity >/dev/null && echo ${PWD}/../../bin/)
+BINPREFIX=$(shell test -x fluidity >/dev/null && echo ${PWD}/)
 
 TESTBIN=${TESTBINFLUIDITY}${TESTBINFLREDECOMP}
 TESTBINLOCAL=${TESTBINFLUIDITYLOCAL}${TESTBINFLREDECOMPLOCAL}

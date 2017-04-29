@@ -6,7 +6,7 @@
   <owner userid="cwilson"/>
   <tags>flml solidity</tags>
     <problem_definition length="long" nprocs="8">
-    <command_line>mpiexec ../../bin/flredecomp -i 1 -o 8 -v -l landslide landslide_flredecomp &amp;&amp;
+    <command_line>mpiexec flredecomp -i 1 -o 8 -v -l landslide landslide_flredecomp &amp;&amp;
 mpiexec fluidity -v0 -l landslide_flredecomp.flml </command_line>
   </problem_definition>  
   <variables>  

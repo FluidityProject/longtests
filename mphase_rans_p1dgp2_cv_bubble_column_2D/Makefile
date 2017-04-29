@@ -4,9 +4,9 @@ preprocess:
 
 run:
 	@echo **********Running flredecomp to decompose the domain
-	mpiexec -n 4 ../../bin/flredecomp -i 1 -o 4 mphase_rans_p1dgp2_cv_bubble_column_2D mphase_rans_p1dgp2_cv_bubble_column_2D_flredecomp
+	mpiexec -n 4 flredecomp -i 1 -o 4 mphase_rans_p1dgp2_cv_bubble_column_2D mphase_rans_p1dgp2_cv_bubble_column_2D_flredecomp
 	@echo **********Running simulation
-	mpiexec -n 4 ../../bin/fluidity -v2 -l mphase_rans_p1dgp2_cv_bubble_column_2D_flredecomp.flml
+	mpiexec -n 4 fluidity -v2 -l mphase_rans_p1dgp2_cv_bubble_column_2D_flredecomp.flml
 
 input: clean preprocess
 

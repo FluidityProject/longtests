@@ -1,5 +1,5 @@
 input: clean
-	../../bin/triangle2gmsh coarse
+	triangle2gmsh coarse
 
 clean:
 	rm -rf coarse.msh

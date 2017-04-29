@@ -2,8 +2,8 @@ preprocess:
 
 run:
 	@echo **********Running simulation
-	mpiexec -n 16 ../../bin/flredecomp -i 1 -o 16 -v -l flow_past_a_square flow_past_a_square_flredecomp
-	mpiexec -n 16 ../../bin/fluidity flow_past_a_square_flredecomp.flml
+	mpiexec -n 16 flredecomp -i 1 -o 16 -v -l flow_past_a_square flow_past_a_square_flredecomp
+	mpiexec -n 16 fluidity flow_past_a_square_flredecomp.flml
 
 input: clean preprocess
 

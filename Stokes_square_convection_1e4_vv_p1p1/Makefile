@@ -8,7 +8,7 @@ default: input
 
 input: src/$(MESH).edge src/$(MESH).ele src/$(MESH).node clean
 	cp src/$(MESH).edge src/$(MESH).ele src/$(MESH).node .
-	../../bin/triangle2gmsh $(MESH)
+	triangle2gmsh $(MESH)
 
 clean: clean-mesh clean-run-debug
 clean-mesh:

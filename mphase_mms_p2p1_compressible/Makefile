@@ -6,9 +6,9 @@ preprocess:
 
 run:
 	@echo **********Running simulations
-	mpiexec ../../bin/fluidity -v3 -l MMS_A.flml
-	mpiexec ../../bin/fluidity -v3 -l MMS_B.flml
-	mpiexec ../../bin/fluidity -v3 -l MMS_C.flml
+	mpiexec fluidity -v3 -l MMS_A.flml
+	mpiexec fluidity -v3 -l MMS_B.flml
+	mpiexec fluidity -v3 -l MMS_C.flml
 
 input: clean preprocess
 
