@@ -9,7 +9,7 @@
 mpiexec flredecomp -i 1 -o 4 -v -l coarse-corner coarse-corner_flredecomp &amp;&amp;
 mpiexec fluidity -v2 -l coarse-corner_flredecomp.flml;
 cd checkpoint;
-cp -r ../$(MODEL)_*6_checkpoint* .
+cp -r ../coarse-corner_*6_checkpoint* .
 ./change_options
 mpiexec fluidity -v2 -l coarse-corner_6_checkpoint.flml;
 cd ..</command_line>
