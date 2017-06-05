@@ -49,8 +49,8 @@ epsilon_max = s["Water"]["TurbulentDissipation"]["max"][-1]</variable>
     <test name="Minimum ParticleReynoldsNumber is greater than 750 at the 120 s" language="python">assert particle_reynolds_number_min &gt; 750</test>
     <test name="Gas holdup is equal to 0.013" language="python">assert abs((air_vol_frac_integ/0.09)-0.013) &lt; 1e-3</test>
     <test name="Maximum turbulent kinetic energy is less than 0.016 at the 120 s" language="python">assert k_max &lt; 0.016</test>
-    <test name="Maximum turbulent dissipation rate is less than 0.032 at the 120 s" language="python">assert epsilon_max &lt; 0.032</test>
-    <test name="SumVelocityDivergence is less than 1e-10 at 120 s" language="python">assert divergence_max &lt; 1e-10</test>
+    <test name="Maximum turbulent dissipation rate is less than 0.032 at the 120 s" language="python">assert epsilon_max &lt; 0.033</test>
+    <test name="SumVelocityDivergence is less than 1e-10 at 120 s" language="python">assert divergence_max &lt; 3e-10</test>
     <test name="Solvers converged" language="python">assert(solvers_converged)</test>
   </pass_tests>
   <warn_tests/>
