@@ -5,7 +5,7 @@
   <owner userid="ctj10"/>
   <tags>flml</tags>
   <problem_definition length="long" nprocs="1">
-     <command_line>fluidity MMS_A.flml &gt; MMS_A.log ; fluidity MMS_B.flml &gt; MMS_B.log ; fluidity MMS_C.flml &gt; MMS_C.log</command_line>
+     <command_line>mpiexec fluidity MMS_A.flml &gt; MMS_A.log ; mpiexec fluidity MMS_B.flml &gt; MMS_B.log ; mpiexec fluidity MMS_C.flml &gt; MMS_C.log</command_line>
   </problem_definition>
   <variables>
     <variable name="convergence" language="python">
