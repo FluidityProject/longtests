@@ -37,8 +37,8 @@ ErrorMetric = estimate_error.get_error_estimates()
     <test name="Final time greater than 3e7 (1 year)" language="python">
 assert FinalTime &gt; 3.e7
     </test>
-    <test name="Final temperature between 6.5 and 7.0 degrees" language="python">
-        assert 6.5 &lt; FinalTemperatureMax &lt; 7.0
+    <test name="Final temperature between 6.5 and 8.0 degrees" language="python">
+        assert 6.5 &lt; FinalTemperatureMax &lt; 8.0
     </test>
     <test name="Final velocity%magnitude is non-zero" language="python">
 assert FinalVelocityMagnitudeMax &gt; 0
