@@ -7,7 +7,7 @@
   <owner userid="pfarrell"/>
   <tags>flml</tags>
   <problem_definition length="long" nprocs="1">
-    <command_line>fluidity -v3 -l  circle-2d-drag.flml</command_line>
+    <command_line>mpiexec fluidity -v3 -l  circle-2d-drag.flml</command_line>
   </problem_definition>
   <variables>
     <variable name="cur_xforce" language="python">
