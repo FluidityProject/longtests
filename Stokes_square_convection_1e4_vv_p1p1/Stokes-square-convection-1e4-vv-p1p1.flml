@@ -218,6 +218,7 @@
             <stress_terms>
               <partial_stress_form/>
             </stress_terms>
+            <buoyancy/>
           </continuous_galerkin>
           <conservative_advection>
             <real_value rank="0">1.0</real_value>
@@ -281,26 +282,26 @@
         <tensor_field name="Viscosity" rank="2">
           <diagnostic>
             <algorithm name="tensor_python_diagnostic" material_phase_support="single">
-              <string_value lines="20" type="code" language="python">import numpy
-import math
+              <string_value lines="20" type="code" language="python">import numpy, math
 
-T=state.scalar_fields["Temperature"]
+# Extract temperature field from state:
+T      = state.scalar_fields["Temperature"]
 
-b = math.log(1000.) * -1
+# Define key constants:
+b      = math.log(1000.) * -1
 deltaT = 1.
-nu0 = 1.
+nu0    = 1.
 
-visc = numpy.zeros((2,2))
+# Create viscosity array:
+visc   = numpy.zeros((2,2))
 
+# Loop over nodes and calculate viscosity:
 for n in range(field.node_count):
-        temp = T.node_val(n) 
-        nu = nu0 * math.exp(b*temp/deltaT)
-        # Note as we're using a linear momentum EOS as opposed to a Bousinessq EOS, this is the dynamic viscosity as opposed to the kinematic viscosity. We therefore do not need to divide by the reference density here.
-        visc[0,0] = nu
-        visc[0,1] = nu
-        visc[1,0] = nu
-        visc[1,1] = nu
-	field.set(n,visc)</string_value>
+  nu   = nu0 * math.exp(b*T.node_val(n)/deltaT)
+  # Note as we're using a linear momentum EOS, this is the dynamic viscosity as opposed to the
+  # kinematic viscosity. We therefore do not need to divide by the reference density here.
+  visc[:,:] = nu
+  field.set(n,visc)</string_value>
             </algorithm>
             <output/>
             <stat>
