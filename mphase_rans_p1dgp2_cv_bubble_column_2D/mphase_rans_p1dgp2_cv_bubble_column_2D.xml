@@ -6,7 +6,7 @@
   <problem_definition length="long" nprocs="4">
     <command_line>
       mpiexec flredecomp -i 1 -o 4 mphase_rans_p1dgp2_cv_bubble_column_2D mphase_rans_p1dgp2_cv_bubble_column_2D_flredecomp
-      mpiexec fluidity -v2 -l mphase_rans_p1dgp2_cv_bubble_column_2D_flredecomp.flml
+      mpiexec fluidity -l mphase_rans_p1dgp2_cv_bubble_column_2D_flredecomp.flml
       </command_line>
   </problem_definition>
   <variables>
