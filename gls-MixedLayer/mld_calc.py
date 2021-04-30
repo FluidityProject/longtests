@@ -21,14 +21,14 @@ def MLD(filelist, unique_string):
 
     # check for no files
     if (len(filelist) == 0):
-        print "No files!"
+        print("No files!")
         sys.exit(1)
 
     for file in filelist:
         try:
             os.stat(file)
         except:
-            print "No such file: %s" % file
+            print("No such file: %s" % file)
             sys.exit(1)
         num = int(file.split(".vtu")[0].split('_')[-1])
         if (num < 1):
