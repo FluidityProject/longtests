@@ -16,8 +16,8 @@ for file in files:
   if file.startswith("fluidity.err-"):
     fileHandle = open(file)
     errorLog = fileHandle.read()
-    print file + ":"
-    print errorLog
+    print(file + ":")
+    print(errorLog)
     error_log_n_lines[file] = len(errorLog.split("\n"))
     fileHandle.close()
     </variable>
@@ -38,7 +38,7 @@ reference_stat = fluidity_tools.stat_parser("src/reference-9908.stat")
   <pass_tests>
     <test name = "Simulation completed" language = "python">
 timesteps = len(current_stat["ElapsedTime"]["value"])
-print "Timesteps: " + str(timesteps)
+print("Timesteps: " + str(timesteps))
 assert(timesteps == 10)
     </test>
     <test name = "Solvers converged" language = "python">
@@ -47,14 +47,14 @@ assert(solvers_converged)
     <test name = "CFL number constrained" language = "python">
 max_cfl_numbers = current_stat["BoussinesqFluid"]["CFLNumber"]["max"]
 max_cfl = max(max_cfl_numbers)
-print "Max CFL number = ", max_cfl
+print("Max CFL number = ", max_cfl)
 assert(max_cfl &lt;= 2.0)
     </test>
     <test name = "Temperature bounded" language = "python">
 min_t = min(current_stat["BoussinesqFluid"]["Temperature"]["min"])
 max_t = max(current_stat["BoussinesqFluid"]["Temperature"]["max"])
-print "Min T = ", min_t
-print "Max T = ", max_t
+print("Min T = ", min_t)
+print("Max T = ", max_t)
 assert(abs(min_t - 0.0) &lt; 1.0e-6)
 assert(abs(max_t - 0.02) &lt; 1.0e-6)
     </test>
@@ -62,8 +62,8 @@ assert(abs(max_t - 0.02) &lt; 1.0e-6)
 import fluidity_tools
 ref = reference_stat["BoussinesqFluid"]["Velocity%magnitude"]["l2norm"][-1]
 current = current_stat["BoussinesqFluid"]["Velocity%magnitude"]["l2norm"][-1]
-print "Reference Velocity%l2norm = " + str(ref)
-print "Current Velocity%l2norm = " + str(current)
+print("Reference Velocity%l2norm = " + str(ref))
+print("Current Velocity%l2norm = " + str(current))
 fluidity_tools.compare_variable(ref, current, 0.1)
     </test>
   </pass_tests>
@@ -72,8 +72,8 @@ fluidity_tools.compare_variable(ref, current, 0.1)
 import fluidity_tools
 ref = reference_stat["BoussinesqFluid"]["Velocity%magnitude"]["l2norm"][-1]
 current = current_stat["BoussinesqFluid"]["Velocity%magnitude"]["l2norm"][-1]
-print "Reference Velocity%l2norm = " + str(ref)
-print "Current Velocity%l2norm = " + str(current)
+print("Reference Velocity%l2norm = " + str(ref))
+print("Current Velocity%l2norm = " + str(current))
 fluidity_tools.compare_variable(ref, current, 0.02)
     </test>
   </warn_tests>
