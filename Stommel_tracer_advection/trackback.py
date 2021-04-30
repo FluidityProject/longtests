@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import scipy.integrate
 import sys
@@ -36,8 +36,8 @@ def func(X, t):
   [u, v] = val(X, t)
   return [-u, -v]
 
-print "func([x, y], t_start): ", func([x, y], t_start)
+print("func([x, y], t_start): ", func([x, y], t_start))
 
 pos = scipy.integrate.odeint(func, [x, y], [t_start, t_end])
-print "pos[0, :]: ", pos[0, :]
-print "pos[-1, :]: ", pos[-1, :]
+print("pos[0, :]: ", pos[0, :])
+print("pos[-1, :]: ", pos[-1, :])

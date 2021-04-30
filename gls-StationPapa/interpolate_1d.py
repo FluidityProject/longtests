@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import numpy
 from numpy import array,argsort,corrcoef,size
@@ -14,7 +14,7 @@ def main():
     assert(interpolate(x,y,6) ==6)
     assert(interpolate(x,y,4) ==4)  
     assert(interpolate(x,y,6.00000000001) == 6.00000000001)
-    print "Success"
+    print("Success")
 
 def interpolate(x, y, x0):
     """

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import numpy
 from numpy import array,argsort,corrcoef,size
@@ -60,7 +60,7 @@ def calc_mld(files,mld_depths):
         try:
             os.stat(file)
         except:
-            print "No such file: %s" % file
+            print("No such file: %s" % file)
             sys.exit(1)
         num = int(file.split(".vtu")[0].split('_')[-1])
         u=vtktools.vtu(file)

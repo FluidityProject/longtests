@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 ## ./Stommel_tracer_advection_error.py Stommel2_adapt-a_20.vtu 10.e6 
 
@@ -48,9 +48,9 @@ def function_analytical(x,y,t_start,t_end):
   from math import exp
   L = 1.e6
   pos = scipy.integrate.odeint(func, [x, y], [t_start, t_end])
-#  print "Departure point:",pos[-1,:]
+#  print("Departure point:",pos[-1,:])
   Analytical = 10.0*exp(-((pos[-1,0] - 2.*L/3.)**2 + (pos[-1,1] - L/3.)**2)/(2.*(L/12.5)**2))
-#  print "Analytical solution:",Analytical
+#  print("Analytical solution:",Analytical)
   return Analytical
 
 
@@ -72,7 +72,7 @@ def function_trivol(X,Y):
 
 
 n = nodecount.nodecount(sys.argv[1])
-print n
+print(n)
 
 ug=vtktools.vtu(sys.argv[1])
 ug.GetFieldNames()
@@ -87,7 +87,7 @@ x=pos[:,0]; y=pos[:,1]; z=pos[:,2]
 
 psi=zeros(size(x), float)
 for i in range(len(x)):
-#  print "Arrival point,i:",x[i],y[i],i
+#  print("Arrival point,i:",x[i],y[i],i)
   psi[i] = function_analytical(x[i],y[i],t_start,t_end)
 
 
@@ -105,10 +105,10 @@ norm1 = dot(ML,err)
 norm2 = dot(ML,err**2)
 snorm2 = sqrt(abs(norm2))
 normaliseL2 = sqrt(abs(dot(ML,psi**2)))
-##print norm1
-##print snorm2
-##print amax(err)
-print n,snorm2/normaliseL2
+##print(norm1)
+##print(snorm2)
+##print(amax(err))
+print(n,snorm2/normaliseL2)
 ug.AddScalarField('Analytical Solution', psi)
 ug.AddScalarField('Error (difference)', err)
 ug.Write('error.vtu')
