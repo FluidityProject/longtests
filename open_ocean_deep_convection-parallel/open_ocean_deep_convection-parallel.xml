@@ -19,8 +19,8 @@ for file in files:
   if file.startswith("fluidity.err-"):
     fileHandle = open(file)
     errorLog = fileHandle.read()
-    print(file + ":"))
-    print(errorLog))
+    print(file + ":")$
+    print(errorLog)$
     error_log_n_lines[file] = len(errorLog.split("\n"))
     fileHandle.close()
     </variable>

@@ -24,9 +24,9 @@ for file in files:
     fileHandle = open(file)
     log = fileHandle.read()
     logSplit = log.split("\n")
-    print(file + ":"))
+    print(file + ":")
     for line in logSplit[-10:]:
-      print(line))
+      print(line)
     log_n_lines[file] = len(logSplit)
     fileHandle.close()
     </variable>
@@ -38,8 +38,8 @@ for file in files:
   if file.startswith("fluidity.err-"):
     fileHandle = open(file)
     errorLog = fileHandle.read()
-    print(file + ":"))
-    print(errorLog))
+    print(file + ":")
+    print(errorLog)
     error_log_n_lines[file] = len(errorLog.split("\n"))
     fileHandle.close()
     </variable>

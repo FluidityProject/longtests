@@ -34,7 +34,7 @@ def get_head_speed(filelist, timdum=1.5):
     try:
       os.stat(file)
     except:
-      print("No such file: %s" % file))
+      print("No such file: %s" % file)$
       sys.exit(1)
     num = int(file.split(".vtu")[0].split('_')[-1])
     if num>2:
@@ -71,7 +71,7 @@ def get_head_speed(filelist, timdum=1.5):
   for y in [mins, maxs]:
     x = [nums[i] * timdum for i in range(len(nums))]
     r = scipy.stats.linregress(x, y)[0]
-    print(x,y))
+    print(x,y)$
     results.append(abs(r))
   results.append(abs(hartel_free_slip_head_speed - results[0]))
   results.append(abs(hartel_no_slip_head_speed -  results[1]))

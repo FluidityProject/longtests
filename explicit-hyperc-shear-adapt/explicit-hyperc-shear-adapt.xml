@@ -64,14 +64,14 @@ for i in range(len(err_lines)):
   if("sum(detwei_B) = " in err_lines[i]):
     line = err_lines[i]
     B = float(line.split(" ")[5])
-    print("B = ", B))
+    print("B = ", B)
     if(line.split("all sum(detwei_C) = ")[-1]=="\n"):
       line2 = err_lines[i+1]
       C = float(line2.split(" ")[2].split("\n")[0])
-      print("C = ", C))
+      print("C = ", C)
     else:
       C = float(line.split(" ")[12].split("\n")[0])
-      print("C = ", C))
+      print("C = ", C)
     cgalforwarderror = cgalforwarderror + abs(B-C)
 
     </variable>
@@ -85,14 +85,14 @@ for i in range(len(err_lines)):
   if("sum(detwei_B) = " in err_lines[i]):
     line = err_lines[i]
     B = float(line.split(" ")[5])
-    print("B = ", B))
+    print("B = ", B)
     if(line.split("all sum(detwei_C) = ")[-1]=="\n"):
       line2 = err_lines[i+1]
       C = float(line2.split(" ")[2].split("\n")[0])
-      print("C = ", C))
+      print("C = ", C)
     else:
       C = float(line.split(" ")[12].split("\n")[0])
-      print("C = ", C))
+      print("C = ", C)
     cgalbackerror = cgalbackerror + abs(B-C)
 
     </variable>
