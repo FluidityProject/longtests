@@ -17,7 +17,7 @@ for file in files:
   logSplit = log.split("\n")
   print(file + ":")
   for line in logSplit[-10:]:
-    print(line)$
+    print(line)
   err_n_lines[file] = len(logSplit)
   fileHandle.close()</variable>
     <variable name="log_n_lines" language="python">import glob
@@ -29,7 +29,7 @@ for file in files:
   logSplit = log.split("\n")
   print(file + ":")
   for line in logSplit[-10:]:
-    print(line)$
+    print(line)
   log_n_lines[file] = len(logSplit)
   fileHandle.close()</variable>
     <variable name="domain_volume" language="python">from fluidity_tools import stat_parser as stat
@@ -59,7 +59,7 @@ def get_water_runups(filelist, values, origin, normals, R0):
     try:
       os.stat(f)
     except:
-      print("No such file: %s" % f)$
+      print("No such file: %s" % f)
       sys.exit(1)
     pvtu = vtktools.vtu(f)
     vtu = vtutools.PvtuToVtu(pvtu)
