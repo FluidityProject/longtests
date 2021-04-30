@@ -87,16 +87,16 @@ assert endtime &gt; 19.9
 assert endtimestep &gt; 0.01
     </test>
     <test name="check water volume fraction was conserved" language="python">
-print 'conservation error = ', abs(vfracintwater0-vfracintwater)
+print('conservation error = ', abs(vfracintwater0-vfracintwater))
 assert abs(vfracintwater0-vfracintwater) &lt; 10*max(maxdivergence, mindivergence)
     </test>
     <test name="check droplet volume fraction was conserved" language="python">
-print 'conservation error = ', abs(vfracintdrop0-vfracintdrop)
+print('conservation error = ', abs(vfracintdrop0-vfracintdrop))
 assert abs(vfracintdrop0-vfracintdrop) &lt; 10*max(maxdivergence, mindivergence)
     </test>
     <test name="check that reasonable tolerance is being used to test conservation" language="python">
-print 'divergence = ', max(maxdivergence, mindivergence)
-print 'tolerance = ', 10*max(maxdivergence, mindivergence)
+print('divergence = ', max(maxdivergence, mindivergence))
+print('tolerance = ', 10*max(maxdivergence, mindivergence))
 assert max(maxdivergence, mindivergence) &lt; 1.E-6
     </test>
     <test name="check minimum water volume fraction is 0.0" language="python">

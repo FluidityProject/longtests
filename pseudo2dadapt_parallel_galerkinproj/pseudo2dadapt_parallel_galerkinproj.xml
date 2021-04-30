@@ -17,9 +17,9 @@ for file in files:
   fileHandle = open(file)
   log = fileHandle.read()
   logSplit = log.split("\n")
-  print file + ":"
+  print(file + ":")
   for line in logSplit[-10:]:
-    print line
+    print(line))
   log_n_lines[file] = len(logSplit)
   fileHandle.close()
     </variable>
@@ -31,9 +31,9 @@ for file in files:
   fileHandle = open(file)
   log = fileHandle.read()
   logSplit = log.split("\n")
-  print file + ":"
+  print(file + ":")
   for line in logSplit[-10:]:
-    print line
+    print(line))
   err_n_lines[file] = len(logSplit)
   fileHandle.close()
     </variable>
@@ -68,7 +68,7 @@ numbertimesteps= len(stat("water_collapse.stat")["CoordinateMesh"]["nodes"])
   </variables>    
   <pass_tests>
     <test name="check water was conserved" language="python">
-print 'mass loss = ', abs(vfracintend-vfracintstart)
+print('mass loss = ', abs(vfracintend-vfracintstart))
 assert abs(vfracintend-vfracintstart) &lt; 1.E-7
     </test>
 <!--    <test name="check max volume fraction bound" language="python">

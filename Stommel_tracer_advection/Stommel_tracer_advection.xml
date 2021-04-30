@@ -54,9 +54,9 @@ def function_analytical(x,y,t_start,t_end):
   from math import exp
   L = 1.e6
   pos = scipy.integrate.odeint(func, [x, y], [t_start, t_end])
-#  print "Departure point:",pos[-1,:]
+#  print("Departure point:",pos[-1,:])
   Analytical = 10.0*exp(-((pos[-1,0] - 2.*L/3.)**2 + (pos[-1,1] - L/3.)**2)/(2.*(L/12.5)**2))
-#  print "Analytical solution:",Analytical
+#  print("Analytical solution:",Analytical)
   return Analytical
 
 
@@ -94,7 +94,7 @@ x=pos[:,0]; y=pos[:,1]; z=pos[:,2]
 
 psi=zeros(size(x), float)
 for i in range(len(x)):
-#  print "Arrival point,i:",x[i],y[i],i
+#  print("Arrival point,i:",x[i],y[i],i)
   psi[i] = function_analytical(x[i],y[i],t_start,t_end)
 
 
@@ -112,10 +112,10 @@ norm1 = dot(ML,err)
 norm2 = dot(ML,err**2)
 snorm2 = sqrt(abs(norm2))
 normaliseL2 = sqrt(abs(dot(ML,psi**2)))
-##print norm1
-##print snorm2
-##print amax(err)
-print n,snorm2/normaliseL2
+##print(norm1)
+##print(snorm2)
+##print(amax(err))
+print(n,snorm2/normaliseL2)
 
 Fixed_error_norm = snorm2/normaliseL2
     </variable>
@@ -162,9 +162,9 @@ def function_analytical(x,y,t_start,t_end):
   from math import exp
   L = 1.e6
   pos = scipy.integrate.odeint(func, [x, y], [t_start, t_end])
-#  print "Departure point:",pos[-1,:]
+#  print("Departure point:",pos[-1,:])
   Analytical = 10.0*exp(-((pos[-1,0] - 2.*L/3.)**2 + (pos[-1,1] - L/3.)**2)/(2.*(L/12.5)**2))
-#  print "Analytical solution:",Analytical
+#  print("Analytical solution:",Analytical)
   return Analytical
 
 
@@ -201,7 +201,7 @@ x=pos[:,0]; y=pos[:,1]; z=pos[:,2]
 
 psi=zeros(size(x), float)
 for i in range(len(x)):
-#  print "Arrival point,i:",x[i],y[i],i
+#  print("Arrival point,i:",x[i],y[i],i)
   psi[i] = function_analytical(x[i],y[i],t_start,t_end)
 
 
@@ -219,10 +219,10 @@ norm1 = dot(ML,err)
 norm2 = dot(ML,err**2)
 snorm2 = sqrt(abs(norm2))
 normaliseL2 = sqrt(abs(dot(ML,psi**2)))
-##print norm1
-##print snorm2
-##print amax(err)
-print n,snorm2/normaliseL2
+##print(norm1)
+##print(snorm2)
+##print(amax(err))
+print(n,snorm2/normaliseL2)
 
 Adapt_error_norm = snorm2/normaliseL2
     </variable>
@@ -235,15 +235,15 @@ Adapt_node_count = ug.ugrid.GetNumberOfPoints()
   </variables>
   <pass_tests>
     <test name="Check that the normalised L2 norm of the error on the fixed mesh is less than 0.55." language="python">
-print Fixed_error_norm
+print(Fixed_error_norm)
 assert(Fixed_error_norm &lt; 0.55)
     </test>
     <test name="Check that the normalised L2 norm of the error on the adaptive mesh is less than 0.25." language="python">
-print Adapt_error_norm
+print(Adapt_error_norm)
 assert(Adapt_error_norm &lt; 0.25)
     </test>
     <test name="Check that number of nodes in the adaptive case is less than 1000." language="python">
-print Adapt_node_count
+print(Adapt_node_count)
 assert(Adapt_node_count &lt; 1000)
     </test>
   </pass_tests>

@@ -115,7 +115,7 @@ assert(timesteps &lt; 10000)
 assert(solvers_converged)
     </test>
     <test name = "CFL number" language = "python">
-print max(max_cfl_numbers)
+print(max(max_cfl_numbers))
 assert(max(max_cfl_numbers) &lt;= 4.0 * 1.2)
     </test>
 <!--Benchmark tests. Testing against benchmark values from:
@@ -126,7 +126,7 @@ max = final_mid_line_u[0]
 for z, u in final_mid_line_u[1:]:
   if u &gt; max[1]:
     max = (z, u)
-print "Max u = " + str(max[1]) + " at z = " + str(max[0])
+print("Max u = " + str(max[1]) + " at z = " + str(max[0]))
 fluidity_tools.compare_variable(max[0], 0.850, 0.06)
 fluidity_tools.compare_variable(max[1], 64.63, 0.06)
     </test>
@@ -136,7 +136,7 @@ max = final_mid_line_w[0]
 for x, w in final_mid_line_w[1:]:
   if w &gt; max[1]:
     max = (x, w)
-print "Max w = " + str(max[1]) + " at x = " + str(max[0])
+print("Max w = " + str(max[1]) + " at x = " + str(max[0]))
 fluidity_tools.compare_variable(max[0], 0.0379, 0.03)
 # Tolerance increased for flredecomp
 #fluidity_tools.compare_variable(max[1], 219.36, 0.003)
@@ -173,8 +173,8 @@ for z, nu in left_boundary_nus[1:]:
     min = (z, nu)
   if nu &gt; max[1]:
     max = (z, nu)
-print "Min Nu = " + str(min[1]) + " at z = " + str(min[0])
-print "Max Nu = " + str(max[1]) + " at z = " + str(max[0])
+print("Min Nu = " + str(min[1]) + " at z = " + str(min[0]))
+print("Max Nu = " + str(max[1]) + " at z = " + str(max[0]))
 fluidity_tools.compare_variable(min[0], 1.0, 0.001)
 # This is way off the benchmark figure
 #fluidity_tools.compare_variable(min[1], 0.989, 0.1)

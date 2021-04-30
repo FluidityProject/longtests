@@ -17,9 +17,9 @@ for file in files:
   fileHandle = open(file)
   log = fileHandle.read()
   logSplit = log.split("\n")
-  print file + ":"
+  print(file + ":")
   for line in logSplit[-10:]:
-    print line
+    print(line))
   log_n_lines[file] = len(logSplit)
   fileHandle.close()
     </variable>
@@ -31,9 +31,9 @@ for file in files:
   fileHandle = open(file)
   log = fileHandle.read()
   logSplit = log.split("\n")
-  print file + ":"
+  print(file + ":")
   for line in logSplit[-10:]:
-    print line
+    print(line))
   err_n_lines[file] = len(logSplit)
   fileHandle.close()
     </variable>
@@ -132,16 +132,16 @@ assert abs(startnodes-endnodes) &gt; 0
 assert maxcflend &gt; 0.1
     </test>
 <!--    <test name="check water volume fraction was conserved" language="python">
-print 'conservation error = ', abs(vfracintwater0-vfracintwater)
+print('conservation error = ', abs(vfracintwater0-vfracintwater))
 assert abs(vfracintwater0-vfracintwater) &lt; 10*max(maxdivergence, mindivergence)
     </test>
     <test name="check droplet volume fraction was conserved" language="python">
-print 'conservation error = ', abs(vfracintdrop0-vfracintdrop)
+print('conservation error = ', abs(vfracintdrop0-vfracintdrop))
 assert abs(vfracintdrop0-vfracintdrop) &lt; 10*max(maxdivergence, mindivergence)
     </test>-->
     <test name="check that reasonable tolerance is being used to test conservation" language="python">
-print 'divergence = ', max(maxdivergence, mindivergence)
-print 'tolerance = ', 10*max(maxdivergence, mindivergence)
+print('divergence = ', max(maxdivergence, mindivergence))
+print('tolerance = ', 10*max(maxdivergence, mindivergence))
 assert max(maxdivergence, mindivergence) &lt; 1.E-6
     </test>
     <test name="check minimum water volume fraction is 0.0" language="python">

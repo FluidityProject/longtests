@@ -24,9 +24,9 @@ for file in files:
     fileHandle = open(file)
     log = fileHandle.read()
     logSplit = log.split("\n")
-    print file + ":"
+    print(file + ":"))
     for line in logSplit[-10:]:
-      print line
+      print(line))
     log_n_lines[file] = len(logSplit)
     fileHandle.close()
     </variable>
@@ -38,8 +38,8 @@ for file in files:
   if file.startswith("fluidity.err-"):
     fileHandle = open(file)
     errorLog = fileHandle.read()
-    print file + ":"
-    print errorLog
+    print(file + ":"))
+    print(errorLog))
     error_log_n_lines[file] = len(errorLog.split("\n"))
     fileHandle.close()
     </variable>
@@ -119,7 +119,7 @@ fluidity_tools.compare_variables(surface_area, [600.0 for i in range(len(surface
     </test>
     <test name = "Zero gradient normal surface integral" language = "python">
 abs_surface_integral = [abs(surface_integral) for surface_integral in gradient_normal_surface_integral]
-print max(abs_surface_integral)
+print(max(abs_surface_integral))
 assert(max(abs_surface_integral) &lt; 0.01)
     </test>
     <test name = "Final checkpoint created" language = "python">

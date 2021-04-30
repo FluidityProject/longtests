@@ -50,11 +50,11 @@ divergencemaxback= max(stat("explicit-hyperc-shear-conservative.stat")["Material
 assert error &lt; 0.05
     </test>
     <test name="check forward conservation tolerance is reasonable" language="python">
-print 'forward tolerance = ', max(abs(divergenceminforward), abs(divergencemaxforward))
+print('forward tolerance = ', max(abs(divergenceminforward), abs(divergencemaxforward)))
 assert max(abs(divergenceminforward), abs(divergencemaxforward)) &lt; 1.E-10
     </test>
     <test name="check backward conservation tolerance is reasonable" language="python">
-print 'backward tolerance = ', max(abs(divergenceminback), abs(divergencemaxback))
+print('backward tolerance = ', max(abs(divergenceminback), abs(divergencemaxback)))
 assert max(abs(divergenceminback), abs(divergencemaxback)) &lt; 1.E-10
     </test>
     <test name="check material1 was conserved on forward run" language="python">

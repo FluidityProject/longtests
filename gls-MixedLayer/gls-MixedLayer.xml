@@ -96,27 +96,27 @@ FinalTimeKE_P1DGP2 = fluidity_tools.stat_parser("gls-MixedLayer-p1dgp2.stat")['E
 -->
     <test name ="Check mixed layed depth is within 2.25 metres of experimentally fitted values. K-epsilon" language="python">
 from numpy import array, all
-print ( array(KE_MLD[1]) - array(KE_MLD[2]) )
+print(( array(KE_MLD[1]) - array(KE_MLD[2]) ))
 assert (all( abs(array(KE_MLD[1]) - array(KE_MLD[2]) ) &lt; 2.25))
     </test>
     <test name ="Check mixed layed depth is within 2.25 metres of experimentally fitted values. Gen" language="python">
 from numpy import array, all
-print ( array(GEN_MLD[1]) - array(GEN_MLD[2]) )
+print(( array(GEN_MLD[1]) - array(GEN_MLD[2]) ))
 assert (all( abs(array(GEN_MLD[1]) - array(GEN_MLD[2]) ) &lt; 2.25))
     </test>
     <test name ="Check mixed layed depth is within 2.25 metres of experimentally fitted values. K-omega" language="python">
 from numpy import array, all
-print ( array(KW_MLD[1]) - array(KW_MLD[2]) )
+print(( array(KW_MLD[1]) - array(KW_MLD[2]) ))
 assert (all( abs(array(KW_MLD[1]) - array(KW_MLD[2]) ) &lt; 2.25))
     </test>   
     <test name ="Check mixed layed depth is within 2.25 metres of experimentally fitted values. K-KL" language="python">
 from numpy import array, all
-print ( array(KKL_MLD[1]) - array(KKL_MLD[2]) )
+print(( array(KKL_MLD[1]) - array(KKL_MLD[2]) ))
 assert (all( abs(array(KKL_MLD[1]) - array(KKL_MLD[2]) ) &lt; 2.25))
     </test>
     <test name ="Check mixed layed depth is within 2.25 metres of experimentally fitted values. K-E_p1DGp2" language="python">
 from numpy import array, all
-print ( array(KE_MLD_P1DGP2[1]) - array(KE_MLD_P1DGP2[2]) )
+print(( array(KE_MLD_P1DGP2[1]) - array(KE_MLD_P1DGP2[2]) ))
 assert (all( abs(array(KE_MLD_P1DGP2[1]) - array(KE_MLD_P1DGP2[2]) ) &lt; 2.25))
     </test>
 

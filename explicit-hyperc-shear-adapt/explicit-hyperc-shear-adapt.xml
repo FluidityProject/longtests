@@ -64,14 +64,14 @@ for i in range(len(err_lines)):
   if("sum(detwei_B) = " in err_lines[i]):
     line = err_lines[i]
     B = float(line.split(" ")[5])
-    print "B = ", B
+    print("B = ", B))
     if(line.split("all sum(detwei_C) = ")[-1]=="\n"):
       line2 = err_lines[i+1]
       C = float(line2.split(" ")[2].split("\n")[0])
-      print "C = ", C
+      print("C = ", C))
     else:
       C = float(line.split(" ")[12].split("\n")[0])
-      print "C = ", C
+      print("C = ", C))
     cgalforwarderror = cgalforwarderror + abs(B-C)
 
     </variable>
@@ -85,59 +85,59 @@ for i in range(len(err_lines)):
   if("sum(detwei_B) = " in err_lines[i]):
     line = err_lines[i]
     B = float(line.split(" ")[5])
-    print "B = ", B
+    print("B = ", B))
     if(line.split("all sum(detwei_C) = ")[-1]=="\n"):
       line2 = err_lines[i+1]
       C = float(line2.split(" ")[2].split("\n")[0])
-      print "C = ", C
+      print("C = ", C))
     else:
       C = float(line.split(" ")[12].split("\n")[0])
-      print "C = ", C
+      print("C = ", C))
     cgalbackerror = cgalbackerror + abs(B-C)
 
     </variable>
   </variables>
   <pass_tests>
     <test name="check error is less than 0.15" language="python">
-print 'error = ', error
+print('error = ', error)
 assert error &lt; 0.15
     </test>
     <test name="check forward conservation (divergence) tolerance is reasonable" language="python">
-print 'forward tolerance = ', max(abs(divergenceminforward), abs(divergencemaxforward))
+print('forward tolerance = ', max(abs(divergenceminforward), abs(divergencemaxforward)))
 assert max(abs(divergenceminforward), abs(divergencemaxforward)) &lt; 1.E-8
     </test>
     <test name="check backward conservation (divergence) tolerance is reasonable" language="python">
-print 'backward tolerance = ', max(abs(divergenceminback), abs(divergencemaxback))
+print('backward tolerance = ', max(abs(divergenceminback), abs(divergencemaxback)))
 assert max(abs(divergenceminback), abs(divergencemaxback)) &lt; 1.E-8
     </test>
     <test name="check material1 was conserved on forward run" language="python">
-print 'mass loss = ', abs(materialstartforward-materialendforward)
-print 'cgal error = ', cgalforwarderror
+print('mass loss = ', abs(materialstartforward-materialendforward))
+print('cgal error = ', cgalforwarderror)
 assert abs(materialstartforward-materialendforward) &lt; max(abs(divergenceminforward), abs(divergencemaxforward), cgalforwarderror)
     </test>
     <test name="check material1 was conserved on reverse run" language="python">
-print 'mass loss = ', abs(materialstartback-materialendback)
-print 'cgal error = ', cgalbackerror
+print('mass loss = ', abs(materialstartback-materialendback))
+print('cgal error = ', cgalbackerror)
 assert abs(materialstartback-materialendback) &lt; max(abs(divergenceminback), abs(divergencemaxback), cgalbackerror)
     </test>
     <test name="check material1 was conserved on pickup for reverse run" language="python">
-print 'mass loss = ', abs(materialendforward-materialstartback)
+print('mass loss = ', abs(materialendforward-materialstartback))
 assert abs(materialendforward-materialstartback) &lt; 1.E-10
     </test>
     <test name="check min divergence was zero for forward run" language="python">
-print 'min div = ', abs(divergenceminforward)
+print('min div = ', abs(divergenceminforward))
 assert abs(divergenceminforward) &lt; 1.E-8
     </test>
     <test name="check max divergence was zero for forward run" language="python">
-print 'max div = ', abs(divergencemaxforward)
+print('max div = ', abs(divergencemaxforward))
 assert abs(divergencemaxforward) &lt; 1.E-8
     </test>
     <test name="check min divergence was zero for back run" language="python">
-print 'min div = ', abs(divergenceminback)
+print('min div = ', abs(divergenceminback))
 assert abs(divergenceminback) &lt; 1.E-8
     </test>
     <test name="check max divergence was zero for back run" language="python">
-print 'max div = ', abs(divergencemaxback)
+print('max div = ', abs(divergencemaxback))
 assert abs(divergencemaxback) &lt; 1.E-8
     </test>
   </pass_tests>

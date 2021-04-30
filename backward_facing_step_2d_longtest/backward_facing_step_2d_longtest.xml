@@ -41,11 +41,11 @@ assert(abs(reference_reattachment_length[-1,0] - 14.0) &lt; 1.0)
 assert(abs(kepsilon_reattachment_length[-1,0] - 7.0) &lt; 0.5)
     </test>
     <test name="reference reattachment length converges with accuracy 5%" language="python">
-print abs(reference_reattachment_length[-1,0]/reference_reattachment_length[-2,0]-1.0)
+print(abs(reference_reattachment_length[-1,0]/reference_reattachment_length[-2,0]-1.0))
 assert(abs(reference_reattachment_length[-1,0]/reference_reattachment_length[-2,0]-1.0) &lt; 0.05)
     </test>
     <test name="kepsilon reattachment length converges with accuracy 5%" language="python">
-print abs(kepsilon_reattachment_length[-1,0]/kepsilon_reattachment_length[-2,0]-1.0)
+print(abs(kepsilon_reattachment_length[-1,0]/kepsilon_reattachment_length[-2,0]-1.0))
 assert(abs(kepsilon_reattachment_length[-1,0]/kepsilon_reattachment_length[-2,0]-1.0) &lt; 0.05)
     </test>
   </pass_tests>

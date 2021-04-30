@@ -54,14 +54,14 @@ def valgrind_int(x):
   """Converts an integer in the output of valgrind to int, stripping out any commas"""
   return int(x.replace(",",""))
   
-print "-------------------------------------------------------------------------------------------------------------------------------------"
-print " valgrind output:"
-print
+print("-------------------------------------------------------------------------------------------------------------------------------------")
+print(" valgrind output:")
+print)
 
 for line in file("valgrind.out", "r"):
   # omit last newline character:
-  print line[:-1]
-print "-------------------------------------------------------------------------------------------------------------------------------------"
+  print(line[:-1])
+print("-------------------------------------------------------------------------------------------------------------------------------------")
 
 f=file("valgrind.out", "r")
 valgrind_output={}
@@ -82,11 +82,11 @@ for line in f:
   </variables>    
   <pass_tests>
     <test name="check water was conserved" language="python">
-print 'mass loss = ', abs(vfracintend-vfracintstart)
+print('mass loss = ', abs(vfracintend-vfracintstart))
 assert abs(vfracintend-vfracintstart) &lt; max(maxdivergence, mindivergence)
     </test>
     <test name="check that reasonable tolerance is being used to test conservation" language="python">
-print 'divergence tolerance = ', max(maxdivergence, mindivergence)
+print('divergence tolerance = ', max(maxdivergence, mindivergence))
 assert max(maxdivergence, mindivergence) &lt; 1.E-5
     </test>
     <test name="check max volume fraction bound" language="python">

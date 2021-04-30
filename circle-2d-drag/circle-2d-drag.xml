@@ -21,7 +21,7 @@ exact_xforce = 0.01116 # the force in x direction from literature
   </variables>
   <pass_tests>
     <test name="relative drag force difference (5%)." language="python">
-print (100.0*abs(cur_xforce - exact_xforce)/exact_xforce)
+print((100.0*abs(cur_xforce - exact_xforce)/exact_xforce))
 assert(abs(cur_xforce - exact_xforce)/exact_xforce &lt; 0.05)
     </test>
   </pass_tests>

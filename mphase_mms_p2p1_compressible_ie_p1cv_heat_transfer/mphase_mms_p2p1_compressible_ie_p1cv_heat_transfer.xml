@@ -21,12 +21,12 @@ meshes = [['A','B'], ['B','C']]
 
 convergence = np.ones(6) * 1e10
 
-print ''
-print 'ORDER OF CONVERGENCE'
-print '-------------------------------------------'
+print('')
+print('ORDER OF CONVERGENCE')
+print('-------------------------------------------')
 
-print 'VelocityError:'
-print '-------------------------------------------'
+print('VelocityError:')
+print('-------------------------------------------')
 
 for i, mesh in enumerate(meshes):
 
@@ -38,7 +38,7 @@ for i, mesh in enumerate(meshes):
     ratio_x = a_error_x / b_error_x
     ratio_y = a_error_y / b_error_y
 
-    print mesh[0] + '->' + mesh[1] + ': ', [log(ratio_x, 2), log(ratio_y, 2)]
+    print(mesh[0] + '->' + mesh[1] + ': ', [log(ratio_x, 2), log(ratio_y, 2)]))
 
     convergence[0] = min(log(ratio_x, 2), log(ratio_y, 2), convergence[0])
 
@@ -50,11 +50,11 @@ for i, mesh in enumerate(meshes):
     ratio_x = a_error_x / b_error_x
     ratio_y = a_error_y / b_error_y
 
-    print mesh[0] + '->' + mesh[1] + ': ', [log(ratio_x, 2), log(ratio_y, 2)]
+    print(mesh[0] + '->' + mesh[1] + ': ', [log(ratio_x, 2), log(ratio_y, 2)]))
 
     convergence[1] = min(log(ratio_x, 2), log(ratio_y, 2), convergence[1])
 
-print '-------------------------------------------'
+print('-------------------------------------------')
 
 fields = [
           'PressureError',
@@ -63,8 +63,8 @@ fields = [
           ]
 
 for i, field in enumerate(fields):
-    print field
-    print '-------------------------------------------'
+    print(field))
+    print('-------------------------------------------'))
 
     for j, mesh in enumerate(meshes):
         
@@ -73,21 +73,21 @@ for i, field in enumerate(fields):
         
         ratio = a_error / b_error
         
-        print mesh[0] + '->' + mesh[1] + ': ', log(ratio, 2)
+        print(mesh[0] + '->' + mesh[1] + ': ', log(ratio, 2)))
 
         convergence[i+2] = min(log(ratio, 2), convergence[i+2])
     
-    print '-------------------------------------------'
+    print('-------------------------------------------'))
 
-print ''
+print('')
 
 fields = [
           'ScalarAbsoluteDifference',
           ]
 
 for i, field in enumerate(fields):
-    print field
-    print '-------------------------------------------'
+    print(field))
+    print('-------------------------------------------'))
 
     for j, mesh in enumerate(meshes):
         
@@ -96,13 +96,13 @@ for i, field in enumerate(fields):
         
         ratio = a_error / b_error
         
-        print mesh[0] + '->' + mesh[1] + ': ', log(ratio, 2)
+        print(mesh[0] + '->' + mesh[1] + ': ', log(ratio, 2)))
 
         convergence[i+5] = min(log(ratio, 2), convergence[i+5])
     
-    print '-------------------------------------------'
+    print('-------------------------------------------'))
 
-print ''
+print('')
 
     </variable>
     <variable name="a_finish_time" language="python">
