@@ -7,7 +7,7 @@
   <owner userid="ctj10"/>
   <tags>flml</tags>
   
-  <problem_definition length="long" nprocs="1">
+  <problem_definition length="vlong" nprocs="1">
     <command_line>
       mpiexec fluidity -v3 -l MMS_A.flml
       mpiexec fluidity -v3 -l MMS_B.flml
