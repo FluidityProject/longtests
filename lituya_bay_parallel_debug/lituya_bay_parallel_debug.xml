@@ -5,10 +5,10 @@
   <name>Control volume, multi-material flow test</name>
   <owner userid="cwilson"/>
   <tags>flml solidity</tags>
-    <problem_definition length="long" nprocs="8">
+    <problem_definition length="vlong" nprocs="8">
     <command_line>mpiexec flredecomp -i 1 -o 8 -v -l landslide landslide_flredecomp &amp;&amp;
 mpiexec fluidity -v0 -l landslide_flredecomp.flml </command_line>
-  </problem_definition>  
+  </problem_definition> 
   <variables>  
     <variable name="endtime" language="python">
 from fluidity_tools import stat_parser as stat

@@ -6,7 +6,7 @@
   <owner userid="asc"/>
   <tags>flml</tags>
   <!-- uses flml -->
-  <problem_definition length="long" nprocs="8">
+  <problem_definition length="vlong" nprocs="8">
     <command_line>cd reference &amp;&amp; mpiexec flredecomp -i 1 -o 8 -v -l backward_facing_step_2d_kim_reference backward_facing_step_2d_kim_reference_flredecomp &amp;&amp; mpiexec fluidity -v2 -l backward_facing_step_2d_kim_reference_flredecomp.flml &amp;&amp; cd .. &amp;&amp; cd kepsilon &amp;&amp; mpiexec flredecomp -i 1 -o 8 -v -l backward_facing_step_2d_kim_kepsilon backward_facing_step_2d_kim_kepsilon_flredecomp &amp;&amp; mpiexec fluidity -v2 -l backward_facing_step_2d_kim_kepsilon_flredecomp.flml &amp;&amp; cd ..</command_line>
   </problem_definition>
   <variables>
