@@ -61,20 +61,20 @@ def function_analytical(x,y,t_start,t_end):
 
 
 def function_tetvol(X,Y,Z):
-	X12 = X[1] - X[0]; X13 = X[2] - X[0]; X14 = X[3] - X[0]
-	Y12 = Y[1] - Y[0]; Y13 = Y[2] - Y[0]; Y14 = Y[3] - Y[0]
-	Z12 = Z[1] - Z[0]; Z13 = Z[2] - Z[0]; Z14 = Z[3] - Z[0]   
-	VOL = X12*( Y13*Z14 - Y14*Z13 ) + X13*( Y14*Z12 - Y12*Z14 ) + X14*( Y12*Z13 - Y13*Z12 )
-	return abs(VOL/6)
+  X12 = X[1] - X[0]; X13 = X[2] - X[0]; X14 = X[3] - X[0]
+  Y12 = Y[1] - Y[0]; Y13 = Y[2] - Y[0]; Y14 = Y[3] - Y[0]
+  Z12 = Z[1] - Z[0]; Z13 = Z[2] - Z[0]; Z14 = Z[3] - Z[0]   
+  VOL = X12*( Y13*Z14 - Y14*Z13 ) + X13*( Y14*Z12 - Y12*Z14 ) + X14*( Y12*Z13 - Y13*Z12 )
+  return abs(VOL/6)
 
 
 def function_trivol(X,Y):
-   a = sqrt( (X[1] - X[0])**2 + (Y[1] - Y[0])**2) 
-   b = sqrt( (X[2] - X[0])**2 + (Y[2] - Y[0])**2)
-   c = sqrt( (X[2] - X[1])**2 + (Y[2] - Y[1])**2)
-   s = 0.5*(a+b+c)
-   VOL = sqrt(s*(s-a)*(s-b)*(s-c))
-   return abs(VOL/2)
+  a = sqrt( (X[1] - X[0])**2 + (Y[1] - Y[0])**2) 
+  b = sqrt( (X[2] - X[0])**2 + (Y[2] - Y[0])**2)
+  c = sqrt( (X[2] - X[1])**2 + (Y[2] - Y[1])**2)
+  s = 0.5*(a+b+c)
+  VOL = sqrt(s*(s-a)*(s-b)*(s-c))
+  return abs(VOL/2)
 
 
 file = 'Stommel2_A_20.vtu'
@@ -101,10 +101,10 @@ for i in range(len(x)):
 NE=ug.ugrid.GetNumberOfCells()
 ML=zeros(size(x), float)
 for ele in range(NE):
-	ndglno=ug.GetCellPoints(ele)
-	trivol=function_trivol(x[ndglno],y[ndglno])
-        for nod in ndglno:
-                ML[nod] = ML[nod] + trivol/3
+  ndglno=ug.GetCellPoints(ele)
+  trivol=function_trivol(x[ndglno],y[ndglno])
+  for nod in ndglno:
+    ML[nod] = ML[nod] + trivol/3
 
 
 err = abs(psi - temp)
@@ -169,20 +169,20 @@ def function_analytical(x,y,t_start,t_end):
 
 
 def function_tetvol(X,Y,Z):
-	X12 = X[1] - X[0]; X13 = X[2] - X[0]; X14 = X[3] - X[0]
-	Y12 = Y[1] - Y[0]; Y13 = Y[2] - Y[0]; Y14 = Y[3] - Y[0]
-	Z12 = Z[1] - Z[0]; Z13 = Z[2] - Z[0]; Z14 = Z[3] - Z[0]   
-	VOL = X12*( Y13*Z14 - Y14*Z13 ) + X13*( Y14*Z12 - Y12*Z14 ) + X14*( Y12*Z13 - Y13*Z12 )
-	return abs(VOL/6)
+  X12 = X[1] - X[0]; X13 = X[2] - X[0]; X14 = X[3] - X[0]
+  Y12 = Y[1] - Y[0]; Y13 = Y[2] - Y[0]; Y14 = Y[3] - Y[0]
+  Z12 = Z[1] - Z[0]; Z13 = Z[2] - Z[0]; Z14 = Z[3] - Z[0]   
+  VOL = X12*( Y13*Z14 - Y14*Z13 ) + X13*( Y14*Z12 - Y12*Z14 ) + X14*( Y12*Z13 - Y13*Z12 )
+  return abs(VOL/6)
 
 
 def function_trivol(X,Y):
-   a = sqrt( (X[1] - X[0])**2 + (Y[1] - Y[0])**2) 
-   b = sqrt( (X[2] - X[0])**2 + (Y[2] - Y[0])**2)
-   c = sqrt( (X[2] - X[1])**2 + (Y[2] - Y[1])**2)
-   s = 0.5*(a+b+c)
-   VOL = sqrt(s*(s-a)*(s-b)*(s-c))
-   return abs(VOL/2)
+  a = sqrt( (X[1] - X[0])**2 + (Y[1] - Y[0])**2) 
+  b = sqrt( (X[2] - X[0])**2 + (Y[2] - Y[0])**2)
+  c = sqrt( (X[2] - X[1])**2 + (Y[2] - Y[1])**2)
+  s = 0.5*(a+b+c)
+  VOL = sqrt(s*(s-a)*(s-b)*(s-c))
+  return abs(VOL/2)
 
 
 file = 'Stommel2_adapt-A_20.vtu'
@@ -208,10 +208,10 @@ for i in range(len(x)):
 NE=ug.ugrid.GetNumberOfCells()
 ML=zeros(size(x), float)
 for ele in range(NE):
-	ndglno=ug.GetCellPoints(ele)
-	trivol=function_trivol(x[ndglno],y[ndglno])
-        for nod in ndglno:
-                ML[nod] = ML[nod] + trivol/3
+  ndglno=ug.GetCellPoints(ele)
+  trivol=function_trivol(x[ndglno],y[ndglno])
+  for nod in ndglno:
+    ML[nod] = ML[nod] + trivol/3
 
 
 err = abs(psi - temp)
