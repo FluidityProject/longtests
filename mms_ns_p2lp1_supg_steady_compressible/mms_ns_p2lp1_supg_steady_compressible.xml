@@ -4,7 +4,7 @@
   <name>p2p1 navier stokes spatial convergence test with strong bc and stress form viscosity</name>
   <owner userid="cwilson"/>
   <tags>flml</tags>
-  <problem_definition length="long" nprocs="1">
+  <problem_definition length="vlong" nprocs="1">
     <command_line>mpiexec fluidity -v3 -l MMS_A.flml; mv fluidity.log-0 MMS_A.log; mv fluidity.err-0 MMS_A.err; mpiexec fluidity -v3 -l MMS_B.flml; mv fluidity.log-0 MMS_B.log; mv fluidity.err-0 MMS_B.err; mpiexec fluidity -v3 -l MMS_C.flml; mv fluidity.log-0 MMS_C.log; mv fluidity.err-0 MMS_C.err; mpiexec fluidity -v3 -l MMS_D.flml; mv fluidity.log-0 MMS_D.log; mv fluidity.err-0 MMS_D.err</command_line>
     <!--<command_line> fluidity -v1 MMS_A.flml &gt; MMS_A.log;  fluidity -v1 MMS_B.flml &gt; MMS_B.log;  fluidity -v1 MMS_C.flml &gt; MMS_C.log;  fluidity -v1 MMS_D.flml &gt; MMS_D.log</command_line>-->
   </problem_definition>

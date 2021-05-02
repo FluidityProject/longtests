@@ -7,7 +7,7 @@
   <owner userid="ctj10"/>
   <tags>flml</tags>
   
-  <problem_definition length="long" nprocs="8">
+  <problem_definition length="vlong" nprocs="8">
     <command_line>mpiexec flredecomp -i 1 -o 8 -v -l mphase_tephra_settling_salinity_adaptive mphase_tephra_settling_salinity_adaptive_flredecomp &amp;&amp;
 mpiexec fluidity mphase_tephra_settling_salinity_adaptive_flredecomp.flml</command_line>
     <!-- This is a 2D (adaptive) simulation of the formation of density currents in a body of water with a salinity gradient. -->

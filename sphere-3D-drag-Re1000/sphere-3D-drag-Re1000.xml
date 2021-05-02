@@ -6,7 +6,7 @@
   <name>sphere-3d-drag-Re1000</name>
   <owner userid="piggt01"/>
   <tags>flml</tags>
-  <problem_definition length="long" nprocs="8">
+  <problem_definition length="vlong" nprocs="8">
     <command_line>mpiexec flredecomp -i 1 -o 8 -v -l sphere-3D-drag-Re1000 sphere-3D-drag-Re1000_flredecomp &amp;&amp;
 mpiexec fluidity -v1 -l sphere-3D-drag-Re1000_flredecomp.flml</command_line>
   </problem_definition>
