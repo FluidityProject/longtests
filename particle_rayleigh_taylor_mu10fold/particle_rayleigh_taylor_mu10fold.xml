@@ -4,7 +4,7 @@
   <name>Testing of particle based multimaterial fields in parallel for a small resolution Rayleigh Taylor overturn case with 10 fold viscosity. Vrms velocity is tested against the maximum value from van Keken, and entrainment is tested against the diagnostics from a successful run.</name>
   <owner userid="cmath"/>
   <tags>flml parallel</tags>
-  <problem_definition length="long" nprocs="8">
+  <problem_definition length="medium" nprocs="8">
     <command_line>    
 mpiexec ../../bin/flredecomp -i 1 -o 8 particle-rayleigh-taylor-mu10fold particle-rayleigh-taylor-mu10fold-flredecomp;      
 mpiexec ../../bin/fluidity -v3 -l particle-rayleigh-taylor-mu10fold-flredecomp.flml
@@ -38,11 +38,11 @@ print ("Total wall time", Walltime)
     </variable>    
   </variables>
   <pass_tests>
-    <test name="Max RMS close to 9.5e-2" language="python">
-assert abs(max_rms-9.5e-2) &lt; 1.5e-4 
+    <test name="Max RMS close to 9.5e-3" language="python">
+assert abs(max_rms-9.5e-3) &lt; 1.5e-4 
     </test>
-    <test name="Max entrainment less than 0.85" language="python">
-assert max_ent &lt; 0.85
+    <test name="Max entrainment less than 0.9" language="python">
+assert max_ent &lt; 0.9
     </test>
   </pass_tests>
   <warn_tests>
