@@ -132,52 +132,53 @@ def get_error_estimates():
     calc_mld(files,mld_depths)
 
     # real data for the UML depths...#
-    reader = csv.reader(file(uml_data))
-    uml_dates = []
-    uml_d = []
-    for row in reader:
-        uml_dates.append(row[1][6:10]+"/"+row[1][3:5]+"/"+row[1][0:2])
-        uml_d.append(float(row[6]))
-
-    last_date = 0
-    uml_depths = {}
-    uml_count = {}
-    i = 0
-
-    # average out those days that have > 1 measurement
-    for date in uml_dates:
-        if (uml_depths.has_key(date)):
-            uml_depths[date] += uml_d[i]
-            uml_count[date] += 1
-        else:
-            uml_depths[date] = uml_d[i]
-            uml_count[date] = 1
-        i += 1
-
-    for key in uml_depths:
-        uml_depths[key] = uml_depths[key]/uml_count[key]
-
-    # lets go to work...
-
-    mld_icom = []
-    uml_measured = []
-    distance = []
-    time = []
-    keys = uml_depths.keys()
-    keys.sort()
-    for key in keys:
-        if (key > end_date):
-            break
-        if (key < start_date):
-            continue
-        distance.append(abs(uml_depths[key] - mld_depths[key]))
-        time.append(key)
-        mld_icom.append(mld_depths[key])
-        uml_measured.append(uml_depths[key])
-
-    r =  corrcoef(uml_measured,mld_icom)[1,0]
-    n = len(keys)
-    dist =  sum(distance)/n
-    ErrorMetric = [r,dist]
-
-    return ErrorMetric
+    with open(uml_data) as csvfile:
+        reader = csv.reader(csvfile)
+        uml_dates = []
+        uml_d = []
+        for row in reader:
+            uml_dates.append(row[1][6:10]+"/"+row[1][3:5]+"/"+row[1][0:2])
+            uml_d.append(float(row[6]))
+    
+        last_date = 0
+        uml_depths = {}
+        uml_count = {}
+        i = 0
+    
+        # average out those days that have > 1 measurement
+        for date in uml_dates:
+            if (uml_depths.has_key(date)):
+                uml_depths[date] += uml_d[i]
+                uml_count[date] += 1
+            else:
+                uml_depths[date] = uml_d[i]
+                uml_count[date] = 1
+            i += 1
+    
+        for key in uml_depths:
+            uml_depths[key] = uml_depths[key]/uml_count[key]
+    
+        # lets go to work...
+    
+        mld_icom = []
+        uml_measured = []
+        distance = []
+        time = []
+        keys = uml_depths.keys()
+        keys.sort()
+        for key in keys:
+            if (key > end_date):
+                break
+            if (key < start_date):
+                continue
+            distance.append(abs(uml_depths[key] - mld_depths[key]))
+            time.append(key)
+            mld_icom.append(mld_depths[key])
+            uml_measured.append(uml_depths[key])
+    
+        r =  corrcoef(uml_measured,mld_icom)[1,0]
+        n = len(keys)
+        dist =  sum(distance)/n
+        ErrorMetric = [r,dist]
+    
+        return ErrorMetric
