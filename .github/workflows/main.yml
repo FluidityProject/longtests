@@ -31,7 +31,7 @@ jobs:
     - name: VLong Testing
       run: |
         cd /home/fluidity/fluidity
-        bin/testharness -f top_hat.xml -x test_results.xml
+        bin/testharness -l vlong -x test_results.xml
 
     - uses: actions/upload-artifact@v2
       with:
