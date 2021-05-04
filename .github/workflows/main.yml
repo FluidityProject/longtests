@@ -1,32 +1,24 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
-# Controls when the action will run. 
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: self-hosted
     container:
       image: fluidity/baseimages:focal
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
     - name: Build
       run: |
+        cd /home/fluidity
         git clone -b gcc10-fixes https://github.com/fluidityproject/fluidity
         cd fluidity
         export FCFLAGS="-I/usr/include"
@@ -36,18 +28,18 @@ jobs:
 
     - name: Vlong Testing
       run: |
-        cd fluidity
-         bin/testharness -l vlong -x test_results.xml
+        cd /home/fluidity/fluidity
+        bin/testharness -l vlong -x test_results.xml
 
     - uses: actions/upload-artifact@v2
       with:
-        path: fluidity/test_results.xml
+        path: /home/fluidity/fluidity/test_results.xml
         name: tests_xml_outputs
 
     - name: JUnit
       uses: mikepenz/action-junit-report@v2
       with:
-        report_paths: fluidity/test_results.xml
+        report_paths: /home/fluidity/fluidity/test_results.xml
         github_token: ${{ secrets.GITHUB_TOKEN }}
         check_name: Test report
         fail_on_failure: true
