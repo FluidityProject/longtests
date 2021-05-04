@@ -10,10 +10,37 @@ on:
 
 jobs:
   VLong:
+    name: ${{ matrix.name }} 
     runs-on: self-hosted
     timeout-minutes: 4300
     container:
       image: fluidity/baseimages:focal
+
+    strategy:
+      fail-fast: false
+      matrix:
+        name: [
+               "tides_in_the_Mediterranean_Sea/tides_in_the_Mediterranean_Sea",
+               "restratification_after_oodc/restratification_after_oodc",
+               "mms_ns_p1dgp2_steady_periodic_parallel/mms_ns_p1dgp2_steady_periodic_parallel",
+               "mms_ns_p1dgp2_steady_periodic/mms_ns_p1dgp2_steady_periodic",
+               "particle_rayleigh_taylor_mu10fold/particle_rayleigh_taylor_mu10fold",
+               "particle_entrainment_of_dense_layer/particle_entrainment_of_dense_layer",
+               "mphase_tephra_settling_salinity/mphase_tephra_settling_salinity",
+               "mphase_mms_p2p1_compressible/mphase_mms_p2p1_compressible",
+               "sphere-3D-drag-Re1000/sphere-3D-drag-Re1000",
+               "backward_facing_step_2d_longtest/backward_facing_step_2d_longtest",
+               "backward_facing_step_3d_longtest/backward_facing_step_3d_longtest",
+               "particle_rayleigh_taylor_instability/particle_rayleigh_taylor_instability",
+               "mphase_tephra_settling_salinity_adaptive/mphase_tephra_settling_salinity_adaptive",
+               "flredecomp_long/flredecomp_long",
+               "mphase_rans_p1dgp2_cv_bubble_column_2D/mphase_rans_p1dgp2_cv_bubble_column_2D",
+               "mphase_mms_p0p1cv_periodic/mphase_mms_p0p1cv_periodic",
+               "flow_past_a_square/flow_past_a_square",
+               "mms_ns_p2lp1_supg_steady_compressible/mms_ns_p2lp1_supg_steady_compressible",
+               "lituya_bay_parallel_debug/lituya_bay_parallel_debug",
+               "saltfinger2d_adaptive",
+              ]
 
     steps:
 
@@ -31,17 +58,14 @@ jobs:
     - name: VLong Testing
       run: |
         cd /home/fluidity/fluidity
-        bin/testharness -l vlong -x test_results.xml
-
-    - uses: actions/upload-artifact@v2
-      with:
-        path: /home/fluidity/fluidity/test_results.xml
-        name: tests_xml_outputs
+        bin/testharness -f ${{ matrix.name }}.xml -x test_results_${{ matrix.name }}.xml
 
     - name: JUnit
       uses: mikepenz/action-junit-report@v2
       with:
-        report_paths: /home/fluidity/fluidity/test_results.xml
+        report_paths: /home/fluidity/fluidity/test_results_${{ matrix.name }}.xml
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        check_name: Test report
+        check_name: Test report ${{ matrix.name }}
         fail_on_failure: true
+
+
