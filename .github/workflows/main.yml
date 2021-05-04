@@ -1,4 +1,4 @@
-name: CI
+name: VLong
 
 on:
   push:
@@ -9,8 +9,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  VLong:
     runs-on: self-hosted
+    timeout-minutes: 4300
     container:
       image: fluidity/baseimages:focal
 
@@ -26,7 +27,7 @@ jobs:
         make
         make fltools
 
-    - name: Vlong Testing
+    - name: VLong Testing
       run: |
         cd /home/fluidity/fluidity
         bin/testharness -l vlong -x test_results.xml
