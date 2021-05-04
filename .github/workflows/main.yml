@@ -22,6 +22,7 @@ jobs:
         cd /home/fluidity
         git clone -b gcc10-fixes https://github.com/fluidityproject/fluidity
         cd fluidity
+        git clone https://github.com/fluidityproject/longtests
         export FCFLAGS="-I/usr/include"
         ./configure --enable-2d-adaptivity
         make
@@ -30,7 +31,7 @@ jobs:
     - name: VLong Testing
       run: |
         cd /home/fluidity/fluidity
-        bin/testharness -l vlong -x test_results.xml
+        bin/testharness -f top_hat.xml -x test_results.xml
 
     - uses: actions/upload-artifact@v2
       with:
