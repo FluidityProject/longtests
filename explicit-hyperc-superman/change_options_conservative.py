@@ -31,7 +31,7 @@ for f in range(len(file_name)):
       break
   
   try:
-    with open(file_name[f]) as flml_file:
+    with open(file_name[f], "w") as flml_file:
       flml_file.writelines(flml_options)
   except:
     sys.stderr.write("Error: change_options failed to write options file\n")
