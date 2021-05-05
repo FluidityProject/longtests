@@ -6,7 +6,6 @@ import os
 import sys
 import vtktools
 import math
-import string
 import re 
 from datetime import *
 import csv
@@ -111,11 +110,11 @@ def get_vtus(directory):
     files = []
     dirList=os.listdir(directory)
     for file in dirList:
-        if (string.find(file, 'checkpoint') != -1):
+        if (str.find(file, 'checkpoint') != -1):
             continue
-        elif (string.find(file, '_0.vtu') != -1):
+        elif (str.find(file, '_0.vtu') != -1):
             continue
-        elif (string.find(file, '.vtu') != -1):
+        elif (str.find(file, '.vtu') != -1):
             files.append(directory + "/" + file)
         else:
             continue
