@@ -56,9 +56,8 @@ divergencemaxback= max(stat("explicit-hyperc-shear-conservative.stat")["Material
     </variable>
     <variable name="cgalforwarderror" language="python">
 # Note this does not take account of the case where cgal fixes the problem
-err = file("forward.err")
-err_lines = err.readlines()
-err.close()
+with open("forward.err") as err:
+  err_lines = err.readlines()
 cgalforwarderror = 0.0
 for i in range(len(err_lines)):
   if("sum(detwei_B) = " in err_lines[i]):
@@ -77,9 +76,8 @@ for i in range(len(err_lines)):
     </variable>
     <variable name="cgalbackerror" language="python">
 # Note this does not take account of the case where cgal fixes the problem
-err = file("back.err")
-err_lines = err.readlines()
-err.close()
+with open("back.err") as err:
+  err_lines = err.readlines()
 cgalbackerror = 0.0
 for i in range(len(err_lines)):
   if("sum(detwei_B) = " in err_lines[i]):
