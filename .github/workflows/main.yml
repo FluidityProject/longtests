@@ -25,7 +25,6 @@ jobs:
                "mms_ns_p1dgp2_steady_periodic_parallel",
                "mms_ns_p1dgp2_steady_periodic",
                "particle_rayleigh_taylor_mu10fold",
-               "particle_entrainment_of_dense_layer",
                "mphase_tephra_settling_salinity",
                "mphase_mms_p2p1_compressible",
                "sphere-3D-drag-Re1000",
