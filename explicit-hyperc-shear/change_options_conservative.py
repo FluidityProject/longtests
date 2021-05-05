@@ -6,9 +6,8 @@ file_name = ["explicit-hyperc-shear-conservative_16_checkpoint.flml"]
 
 for f in range(len(file_name)):
   try:
-    flml_file = file(file_name[f], "r")
-    flml_options = flml_file.readlines()
-    flml_file.close()
+    with open(file_name[f]) as flml_file:
+      flml_options = flml_file.readlines()
   except:
     sys.stderr.write("Error: change_options failed to read options file\n")
     sys.exit(1)
@@ -32,9 +31,8 @@ for f in range(len(file_name)):
       break
   
   try:
-    flml_file = file(file_name[f], "w")
-    flml_file.writelines(flml_options)
-    flml_file.close()
+    with open(file_name[f], "w") as flml_file:
+      flml_file.writelines(flml_options)
   except:
     sys.stderr.write("Error: change_options failed to write options file\n")
     sys.exit(1)
