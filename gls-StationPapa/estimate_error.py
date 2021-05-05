@@ -146,7 +146,7 @@ def get_error_estimates():
     
         # average out those days that have > 1 measurement
         for date in uml_dates:
-            if (uml_depths.has_key(date)):
+            if date in uml_depths:
                 uml_depths[date] += uml_d[i]
                 uml_count[date] += 1
             else:
