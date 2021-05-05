@@ -32,7 +32,7 @@ uml_data = "mld_stationpapa.csv"
 # start date/time
 start_date = '1970/01/02'
 end_date = '1971/01/01'
-start_datetime = datetime(1970,01,01)
+start_datetime = datetime(1970,1,1)
 
 #### taken from http://www.codinghorror.com/blog/archives/001018.html  #######
 def tryint(s):
