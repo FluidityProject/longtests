@@ -154,7 +154,7 @@
   <timestepping>
     <current_time>
       <real_value rank="0">0.0</real_value>
-      <time_units date="seconds since 1987-01-05 00:00.0"/>
+      <time_units date="seconds since 1987-01-05 00:00"/>
     </current_time>
     <timestep>
       <real_value rank="0">750.0</real_value>
