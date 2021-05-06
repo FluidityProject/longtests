@@ -163,8 +163,7 @@ def get_error_estimates():
         uml_measured = []
         distance = []
         time = []
-        keys = uml_depths.keys()
-        keys.sort()
+        keys = sorted(uml_depths.keys())
         for key in keys:
             if (key > end_date):
                 break
