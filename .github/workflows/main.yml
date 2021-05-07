@@ -33,8 +33,7 @@ jobs:
                #"mphase_mms_p0p1cv_periodic",
                #"flow_past_a_square",
                #"mms_ns_p2lp1_supg_steady_compressible",
-               #"lituya_bay_parallel_debug",
-               "saltfinger2d_adaptive",
+               #"lituya_bay_parallel_debug"
               ]
 
     steps:
