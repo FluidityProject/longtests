@@ -41,7 +41,7 @@ jobs:
     - name: Build
       run: |
         cd /home/fluidity
-        git clone -b gcc10-fixes https://github.com/fluidityproject/fluidity
+        git clone https://github.com/fluidityproject/fluidity
         cd fluidity
         git clone https://github.com/fluidityproject/longtests
         export FCFLAGS="-I/usr/include"
