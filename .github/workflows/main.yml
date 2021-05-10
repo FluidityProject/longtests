@@ -16,7 +16,7 @@ jobs:
       matrix:
         name: [
                "tides_in_the_Mediterranean_Sea",
-               "restratification_after_oodc",
+               #"restratification_after_oodc",
                #"mms_ns_p1dgp2_steady_periodic_parallel",
                #"mms_ns_p1dgp2_steady_periodic",
                #"particle_rayleigh_taylor_mu10fold",
@@ -30,7 +30,7 @@ jobs:
                #"particle_rayleigh_taylor_instability",
                #"particle_entrainment_of_dense_layer ",
                #"mphase_tephra_settling_salinity_adaptive",
-               "flredecomp_long",
+               #"flredecomp_long",
                #"mphase_rans_p1dgp2_cv_bubble_column_2D",
                #"mphase_mms_p0p1cv_periodic",
                #"flow_past_a_square",
