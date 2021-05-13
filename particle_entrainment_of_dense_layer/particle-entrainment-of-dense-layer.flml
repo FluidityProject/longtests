@@ -110,39 +110,21 @@
         <initial_position>
           <python>
             <string_value type="code" language="python" lines="20">def val(t):
-  from numpy import arange,zeros,reshape,concatenate,cos,pi,sqrt
-  import math
-  res=25
-  lres=25
-  pres=20.0
-  c=24416
-  x=zeros(c,float)
-  y=zeros(c,float)
-  k=0
-
-  dx=1.0/(sqrt(pres)*res)
-  dy=1.0/(sqrt(pres)*res)
-  a=int(math.ceil(2./dx))
-  b=int(math.ceil(1./dy))
-  for i in range(0,a):
-    for j in range(0,b):
-      if ((1.0*j/b)&lt;0.04):
-        if ((1.0*j/b)&gt;0.025):
-          k=k+1
-          x[k]=2.0*i/a
-          y[k]=1.0*j/b
-  dx=1.0/(sqrt(pres)*lres)
-  dy=1.0/(sqrt(pres)*lres)
-  a=int(math.ceil(2./dx))
-  b=int(math.ceil(1./dy))
-  for i in range(0,a):
-    for j in range(0,b):
-      if ((1.0*j/b)&gt;=0.04):
-        x[k]=2.0*i/a
-        y[k]=1.0*j/b
-        k=k+1
-
-  return reshape(concatenate((x,y)),(2,c)).T</string_value>
+    from numpy import vstack
+    from numpy.random import default_rng    
+    mat_bound_y = 0.025 # Initial interface depth.
+    trans_thick = 0.03 # A higher density of particles is specified in a transition region, minimising need for spawning.
+    domain_x, domain_y = 2, 1
+    part_density_trans, part_density_else = 0.002 ** 2, 0.004 ** 2
+    part_number_trans = int(domain_x * trans_thick / 2 / part_density_trans)
+    part_number_else = int(domain_x * (domain_y - mat_bound_y - trans_thick / 2)
+                           / part_density_else)
+    return vstack((
+        default_rng(0).uniform([0, mat_bound_y + trans_thick / 2],
+                               [domain_x, domain_y], (part_number_else, 2)),
+        default_rng(0).uniform([0, mat_bound_y],
+                               [domain_x, mat_bound_y + trans_thick / 2],
+                               (part_number_trans, 2))))</string_value>
           </python>
         </initial_position>
         <attributes>
@@ -157,37 +139,21 @@
         <initial_position>
           <python>
             <string_value type="code" language="python" lines="20">def val(t):
-  from numpy import arange,zeros,reshape,concatenate,cos,pi,sqrt
-  import math
-  res=25
-  lres=25
-  pres=20
-  c=672
-  x=zeros(c,float)
-  y=zeros(c,float)
-  k=0
-  dx=1.0/(sqrt(pres)*res)
-  dy=1.0/(sqrt(pres)*res)
-  a=int(math.ceil(2./dx))
-  b=int(math.ceil(1./dy))
-  for i in range(0,a):
-    for j in range(0,b):
-        if ((1.0*j/b)&lt;= 0.025):
-          if ((1.0*j/b)&gt; 0.01):
-            x[k]=2.0*i/a
-            y[k]=1.0*j/b
-            k=k+1
-  dx=1.0/(sqrt(pres)*lres)
-  dy=1.0/(sqrt(pres)*lres)
-  a=int(math.ceil(2./dx))
-  b=int(math.ceil(1./dy))
-  for i in range(0,a):
-    for j in range(0,b):
-        if ((1.0*j/b)&lt;= 0.01):
-          x[k]=2.0*i/a
-          y[k]=1.0*j/b
-          k=k+1
-  return reshape(concatenate((x,y)),(2,c)).T</string_value>
+    from numpy import vstack
+    from numpy.random import default_rng    
+    mat_bound_y = 0.025 # Initial interface depth.
+    trans_thick = 0.03 # A higher density of particles is specified in a transition region, minimising need for spawning.
+    domain_x, domain_y = 2, 1
+    part_density_trans, part_density_else = 0.002 ** 2, 0.004 ** 2
+    part_number_trans = int(domain_x * trans_thick / 2 / part_density_trans)
+    part_number_else = int(domain_x * (mat_bound_y - trans_thick / 2)
+                           / part_density_else)
+    return vstack((
+        default_rng(0).uniform([0, 0],
+                               [domain_x, mat_bound_y - trans_thick / 2], (part_number_else, 2)),
+        default_rng(0).uniform([0, mat_bound_y - trans_thick / 2],
+                               [domain_x, mat_bound_y],
+                               (part_number_trans, 2))))</string_value>
           </python>
         </initial_position>
         <attributes>
