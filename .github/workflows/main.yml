@@ -15,7 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         name: [
-               "tides_in_the_Mediterranean_Sea",
+               #"tides_in_the_Mediterranean_Sea",
                #"restratification_after_oodc",
                #"mms_ns_p1dgp2_steady_periodic_parallel",
                #"mms_ns_p1dgp2_steady_periodic",
@@ -26,9 +26,9 @@ jobs:
                #"flow_past_sphere_Re1000",
                #"backward_facing_step_2d_longtest",
                #"backward_facing_step_3d_longtest",
-               "backward_facing_step_3d",
+               #"backward_facing_step_3d",
                #"particle_rayleigh_taylor_instability",
-               #"particle_entrainment_of_dense_layer ",
+               "particle_entrainment_of_dense_layer "
                #"mphase_tephra_settling_salinity_adaptive",
                #"flredecomp_long",
                #"mphase_rans_p1dgp2_cv_bubble_column_2D",
