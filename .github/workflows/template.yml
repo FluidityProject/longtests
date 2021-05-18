@@ -2,8 +2,8 @@ name: Template
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: 'mm hh dd * *'
+  #schedule:
+    #- cron: 'mm hh dd * *'
 
 env:
   NAME: Template
