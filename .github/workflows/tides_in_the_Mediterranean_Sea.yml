@@ -3,14 +3,11 @@ name: tides_in_the_Mediterranean_Sea
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 12 18 * *'
-
-env:
-  NAME: tides_in_the_Mediterranean_Sea
+    - cron: '25 03 1 * *'
 
 jobs:
   Template:
-    name: ${NAME} 
+    name: tides_in_the_Mediterranean_Sea 
     runs-on: self-hosted
     timeout-minutes: 4300
     container:
@@ -32,13 +29,13 @@ jobs:
     - name: VLong Testing
       run: |
         cd /home/fluidity/fluidity
-        bin/testharness -f ${NAME}.xml -x test_results_${NAME}.xml
+        bin/testharness -f tides_in_the_Mediterranean_Sea.xml -x test_results_tides_in_the_Mediterranean_Sea.xml
 
     - name: JUnit
       uses: mikepenz/action-junit-report@v2
       with:
-        report_paths: /home/fluidity/fluidity/test_results_${NAME}.xml
+        report_paths: /home/fluidity/fluidity/test_results_tides_in_the_Mediterranean_Sea.xml
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        check_name: Test report ${NAME}
+        check_name: Test report tides_in_the_Mediterranean_Sea
         fail_on_failure: true
 
