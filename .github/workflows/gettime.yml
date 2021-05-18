@@ -2,6 +2,8 @@ name: Gettime
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '* * * * *'
 
 jobs:
   Gettime:
