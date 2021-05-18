@@ -2,7 +2,7 @@
 <!DOCTYPE testproblem SYSTEM "regressiontest.dtd">
 <testproblem>
   <name>flredecomp_long</name>
-  <owner userid="pfarrell"/>
+  <owner userid="matt-piggott"/>
   <tags>flml</tags>
   <problem_definition length = "vlong" nprocs = "8">
     <command_line>mpiexec flredecomp -v -l -i 3 -o 8 CoarseCorner_1_checkpoint output8; mkdir flredecomp_out; mv flredecomp.err-* flredecomp.log-* flredecomp_out; mpiexec flredecomp -v -l -i 8 -o 4 output8 output4</command_line>

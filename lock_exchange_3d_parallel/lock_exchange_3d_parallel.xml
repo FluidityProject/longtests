@@ -3,7 +3,7 @@
 
 <testproblem>
   <name>lock exchange parallel test</name>
-  <owner userid="hhiester"/>
+  <owner userid="matt-piggott"/>
   <tags>flml</tags>
     <problem_definition length="long" nprocs="16">
     <command_line>mpiexec flredecomp -i 1 -o 16 -v -l lock_exchange_3d_parallel lock_exchange_3d_parallel_flredecomp &amp;&amp;

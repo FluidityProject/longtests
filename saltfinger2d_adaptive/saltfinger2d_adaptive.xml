@@ -2,7 +2,7 @@
 <!DOCTYPE testproblem SYSTEM "regressiontest.dtd">
 <testproblem>
   <name>2D salt finger adaptive</name>
-  <owner userid="fmactavish"/>
+  <owner userid="matt-piggott"/>
   <tags>flml 2dadapt</tags>
   <problem_definition length="long" nprocs="8">
     <command_line>mpiexec flredecomp -i 1 -o 8 -v -l saltfinger2d_adaptive saltfinger2d_adaptive_flredecomp &amp;&amp;
