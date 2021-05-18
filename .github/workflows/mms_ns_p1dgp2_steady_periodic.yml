@@ -1,13 +1,13 @@
-name: tides_in_the_Mediterranean_Sea
+name: mms_ns_p1dgp2_steady_periodic
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '25 03 21 * *'
+    - cron: '25 03 8 * *'
 
 jobs:
   Template:
-    name: tides_in_the_Mediterranean_Sea 
+    name: mms_ns_p1dgp2_steady_periodic 
     runs-on: self-hosted
     timeout-minutes: 4300
     container:
@@ -29,13 +29,13 @@ jobs:
     - name: VLong Testing
       run: |
         cd /home/fluidity/fluidity
-        bin/testharness -f tides_in_the_Mediterranean_Sea.xml -x test_results_tides_in_the_Mediterranean_Sea.xml
+        bin/testharness -f mms_ns_p1dgp2_steady_periodic.xml -x test_results_tides_in_the_Mediterranean_Sea.xml
 
     - name: JUnit
       uses: mikepenz/action-junit-report@v2
       with:
-        report_paths: /home/fluidity/fluidity/test_results_tides_in_the_Mediterranean_Sea.xml
+        report_paths: /home/fluidity/fluidity/test_results_mms_ns_p1dgp2_steady_periodic.xml
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        check_name: Test report tides_in_the_Mediterranean_Sea
+        check_name: Test report mms_ns_p1dgp2_steady_periodic
         fail_on_failure: true
 

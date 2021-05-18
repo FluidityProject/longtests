@@ -1,13 +1,13 @@
-name: tides_in_the_Mediterranean_Sea
+name: lituya_bay_parallel_debug
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '25 03 21 * *'
+    - cron: '25 03 7 * *'
 
 jobs:
   Template:
-    name: tides_in_the_Mediterranean_Sea 
+    name: lituya_bay_parallel_debug 
     runs-on: self-hosted
     timeout-minutes: 4300
     container:
@@ -29,13 +29,13 @@ jobs:
     - name: VLong Testing
       run: |
         cd /home/fluidity/fluidity
-        bin/testharness -f tides_in_the_Mediterranean_Sea.xml -x test_results_tides_in_the_Mediterranean_Sea.xml
+        bin/testharness -f lituya_bay_parallel_debug.xml -x test_results_tides_in_the_Mediterranean_Sea.xml
 
     - name: JUnit
       uses: mikepenz/action-junit-report@v2
       with:
-        report_paths: /home/fluidity/fluidity/test_results_tides_in_the_Mediterranean_Sea.xml
+        report_paths: /home/fluidity/fluidity/test_results_lituya_bay_parallel_debug.xml
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        check_name: Test report tides_in_the_Mediterranean_Sea
+        check_name: Test report lituya_bay_parallel_debug
         fail_on_failure: true
 
