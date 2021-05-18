@@ -29,7 +29,7 @@ jobs:
     - name: VLong Testing
       run: |
         cd /home/fluidity/fluidity
-        bin/testharness -f mms_ns_p1dgp2_steady_periodic_parallel.xml -x test_results_tides_in_the_Mediterranean_Sea.xml
+        bin/testharness -f mms_ns_p1dgp2_steady_periodic_parallel.xml -x test_results_mms_ns_p1dgp2_steady_periodic_parallel.xml
 
     - name: JUnit
       uses: mikepenz/action-junit-report@v2
