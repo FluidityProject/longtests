@@ -3,7 +3,7 @@ name: tides_in_the_Mediterranean_Sea
 on:
   workflow_dispatch:
   schedule:
-    - cron: '39 11 18 * *'
+    - cron: '0 12 18 * *'
 
 env:
   NAME: tides_in_the_Mediterranean_Sea
