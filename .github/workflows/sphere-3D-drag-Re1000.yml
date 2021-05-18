@@ -3,7 +3,7 @@ name: sphere-3D-drag-Re1000
 on:
   workflow_dispatch:
   schedule:
-    - cron: '25 03 20 * *'
+    - cron: '25 03 21 * *'
 
 jobs:
   Template:

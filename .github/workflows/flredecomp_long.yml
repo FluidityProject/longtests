@@ -2,8 +2,8 @@ name: flredecomp_long
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '25 03 6 * *'
+  #schedule:
+    #- cron: '25 03 23 * *'
 
 jobs:
   Template:

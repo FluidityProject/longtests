@@ -3,7 +3,7 @@ name: flow_past_sphere_Re1000
 on:
   workflow_dispatch:
   schedule:
-    - cron: '25 03 5 * *'
+    - cron: '25 03 6 * *'
 
 jobs:
   Template:
