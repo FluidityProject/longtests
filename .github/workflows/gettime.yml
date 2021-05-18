@@ -1,0 +1,14 @@
+name: Gettime
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Gettime:
+    name: Gettime
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Gettime
+      run: date
