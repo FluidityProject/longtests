@@ -8,9 +8,13 @@
 mpiexec fluidity balzano1_2plus1_flredecomp.flml</command_line>
   </problem_definition>
   <variables>
-    <variable name="velocity" language="python">from fluidity_tools import stat_parser
-s = stat_parser("balzano1_2plus1.detectors")
-velocity=s["water"]["Velocity"]</variable>
+    <variable name="velocity" language="python">
+import h5py
+import numpy as np
+f = h5py.File('balzano1_2plus1.detectors.h5part', 'r')
+n = len(f)-1
+
+velocity = np.vstack([f[f'/Step#{n}/water%Velocity%{d}'][:] for d in 'xyz'])		    
     <variable name="wetting_drying_alpha" language="python">
 import h5py
 import numpy as np
