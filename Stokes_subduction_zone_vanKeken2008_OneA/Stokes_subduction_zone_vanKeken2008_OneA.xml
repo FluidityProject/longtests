@@ -13,7 +13,7 @@ import numpy as np
 f = h5py.File('vanKekenOneA.detectors.h5part', 'r')
 d = f['/Step#{}'.format(len(f) - 1)]
 det_id, = np.where(d['id'][:] == f.attrs['Temperature6060%ids'][0])
-T60 = d['Fluid%Temperature'][det_id[0]] - 273.
+Temperature6060 = d['Fluid%Temperature'][det_id[0]] - 273.
     </variable>
     <variable name="TL2SLAB" language="python">
 import h5py
