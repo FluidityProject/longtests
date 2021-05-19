@@ -284,39 +284,36 @@
             <integer_value shape="1" rank="1">27</integer_value>
           </region_ids>
           <python>
-            <string_value lines="20" type="code" language="python">def val(X, t):
-  
-   	from math import sqrt, atan, cos, sin, pi
+          <string_value lines="20" type="code" language="python">def val(X, t):
+  from math import sqrt, atan, cos, sin, pi
 
-   	Xcoord = X[0]
-        Ycoord = X[1]
-  
-   	Depth = (X[1] * -1.) -50000.
-   	Xdist  = X[0] -50000.
+  Xcoord = X[0]
+  Ycoord = X[1]
 
-   	if(Xdist == 0.) :
-	   	Xdist = 0.000000000000001
+  Depth = (X[1] * -1.) -50000.
+  Xdist  = X[0] -50000.
 
-   	if Depth == 0 :
- 
-      		Vx = 0.
-      		Vy = 0.
+  if(Xdist == 0.) :
+    Xdist = 0.000000000000001
 
-   	else :
- 
-      		ALFA = atan(1)
-      		THETA = atan(Depth/Xdist)
+  if Depth == 0 :
+    Vx = 0.
+    Vy = 0.
 
-		VTHETA = (((ALFA - THETA) * sin(THETA) * sin(ALFA)) - (ALFA * THETA * sin(ALFA-THETA))) / (ALFA**2 - (sin(ALFA)**2))
-		VTHETA = VTHETA * (0.05/(3600.*24.*365.)) *-1.
+  else :
+    ALFA = atan(1)
+    THETA = atan(Depth/Xdist)
 
-		VR = (((ALFA - THETA) * cos(THETA) * sin(ALFA)) - (sin(ALFA) * sin(THETA)) - (ALFA * sin(ALFA-THETA)) + (ALFA*THETA*cos(ALFA-THETA))) / ((ALFA**2) - (sin(ALFA))**2)
-      		VR = VR * (0.05/(3600.*24.*365.))
+    VTHETA = (((ALFA - THETA) * sin(THETA) * sin(ALFA)) - (ALFA * THETA * sin(ALFA-THETA))) / (ALFA**2 - (sin(ALFA)**2))
+    VTHETA = VTHETA * (0.05/(3600.*24.*365.)) *-1.
 
-      		Vx = -( VTHETA*sin(THETA) - VR*cos(THETA) )
-      		Vy = - (VTHETA*cos(THETA) + VR*sin(THETA) )
+    VR = (((ALFA - THETA) * cos(THETA) * sin(ALFA)) - (sin(ALFA) * sin(THETA)) - (ALFA * sin(ALFA-THETA)) + (ALFA*THETA*cos(ALFA-THETA))) / ((ALFA**2) - (sin(ALFA))**2)
+    VR = VR * (0.05/(3600.*24.*365.))
 
-   	return [Vx, Vy]</string_value>
+    Vx = -( VTHETA*sin(THETA) - VR*cos(THETA) )
+    Vy = - (VTHETA*cos(THETA) + VR*sin(THETA) )
+
+  return [Vx, Vy]</string_value>
           </python>
         </initial_condition>
         <prescribed_region name="Crust">
@@ -333,10 +330,10 @@
           </region_ids>
           <python>
             <string_value lines="20" type="code" language="python">def val(X, t):
-        from math import sqrt
-        vx = sqrt(((0.05/(3600.*24.*365.))**2.)/2.)
-        vy = -sqrt(((0.05/(3600.*24.*365.))**2.)/2.)
-        return [vx,vy]</string_value>
+  from math import sqrt
+  vx = sqrt(((0.05/(3600.*24.*365.))**2.)/2.)
+  vy = -sqrt(((0.05/(3600.*24.*365.))**2.)/2.)
+  return [vx,vy]</string_value>
           </python>
         </prescribed_region>
         <boundary_conditions name="Crust">
@@ -495,8 +492,8 @@ for i in range(field.node_count):
         <initial_condition name="WholeMesh">
           <python>
             <string_value lines="20" type="code" language="python">def val(x, t):
-	T = 273.
-	return T</string_value>
+              T = 273.
+              return T</string_value>
           </python>
         </initial_condition>
         <boundary_conditions name="SurfaceTemperature">
@@ -526,34 +523,33 @@ for i in range(field.node_count):
           <type name="dirichlet">
             <python>
               <string_value lines="20" type="code" language="python">def val(X, t):
+  import math
 
-	import math
+  def erf(x):
+    # save the sign of x
+    sign = 1
+    if x &lt; 0:
+      sign = -1
+    x = abs(x)
 
-	def erf(x):
-  		# save the sign of x
- 		sign = 1
- 		if x &lt; 0: 
- 	    		sign = -1
- 	   	x = abs(x)
+    # constants
+    a1 =  0.254829592
+    a2 = -0.284496736
+    a3 =  1.421413741
+    a4 = -1.453152027
+    a5 =  1.061405429
+    p  =  0.3275911
 
-	    	# constants
-	    	a1 =  0.254829592
-	    	a2 = -0.284496736
-	    	a3 =  1.421413741
-    	    	a4 = -1.453152027
- 	    	a5 =  1.061405429
- 	    	p  =  0.3275911
-
- 	   	# A&amp;S formula 7.1.26
- 	   	t = 1.0/(1.0 + p*x)
- 	   	y = 1.0 - (((((a5*t + a4)*t) + a3)*t + a2)*t + a1)*t*math.exp(-x*x)
-          	return sign*y # erf(-x) = -erf(x)
+    # A&amp;S formula 7.1.26
+    t = 1.0/(1.0 + p*x)
+    y = 1.0 - (((((a5*t + a4)*t) + a3)*t + a2)*t + a1)*t*math.exp(-x*x)
+    return sign*y # erf(-x) = -erf(x)
 
 
-   	Depth = X[1] * -1.
-  	Age = 1576800000000000.
-   	TempHalfSpace = 273. + 1300.*(erf(Depth/(2.*math.sqrt(0.0000007272*Age))))
-   	return TempHalfSpace</string_value>
+  Depth = X[1] * -1.
+  Age = 1576800000000000.
+  TempHalfSpace = 273. + 1300.*(erf(Depth/(2.*math.sqrt(0.0000007272*Age))))
+  return TempHalfSpace</string_value>
             </python>
           </type>
         </boundary_conditions>
@@ -564,9 +560,9 @@ for i in range(field.node_count):
           <type name="dirichlet">
             <python>
               <string_value lines="20" type="code" language="python">def val(X, t):
-   	Depth = X[1] * -1.
-   	T = 273. + (Depth*0.026)
-	return T</string_value>
+  Depth = X[1] * -1.
+  T = 273. + (Depth*0.026)
+  return T</string_value>
             </python>
           </type>
         </boundary_conditions>
