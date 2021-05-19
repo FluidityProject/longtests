@@ -14,7 +14,8 @@ import numpy as np
 f = h5py.File('balzano1_2plus1.detectors.h5part', 'r')
 n = len(f)-1
 
-velocity = np.vstack([f[f'/Step#{n}/water%Velocity%{d}'][:] for d in 'xyz'])		    
+velocity = np.vstack([f[f'/Step#{n}/water%Velocity%{d}'][:] for d in 'xyz'])
+    </variable>
     <variable name="wetting_drying_alpha" language="python">
 import h5py
 import numpy as np
