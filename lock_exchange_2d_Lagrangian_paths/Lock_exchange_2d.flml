@@ -67,69 +67,64 @@
     <detectors>
       <static_detector name="detect1">
         <location>
-          <real_value shape="2" dim1="dim" rank="1">2.5 0</real_value>
+          <real_value rank="1" dim1="dim" shape="2">2.5 0</real_value>
         </location>
       </static_detector>
-      <detector_array name="Detectors_interface">
-        <number_of_detectors>
-          <integer_value rank="0">100</integer_value>
-        </number_of_detectors>
-        <lagrangian/>
-        <python>
-          <string_value lines="20" type="code" language="python">def val(t):
-            import math
-
-            ret=[]
-            for i in range(100):
-                    ret.append([0.0,(-0.495 + i * 0.01)])
-
-            return ret</string_value>
-        </python>
-      </detector_array>
-      <detector_array name="Detectors_right">
-        <number_of_detectors>
-          <integer_value rank="0">100</integer_value>
-        </number_of_detectors>
-        <lagrangian/>
-        <python>
-          <string_value lines="20" type="code" language="python">def val(t):
-            import math
-
-            ret=[]
-            for i in range(100):
-                    ret.append([2.5,(-0.495 + i * 0.01)])
-
-            return ret</string_value>
-        </python>
-      </detector_array>
-      <detector_array name="Detectors_left">
-        <number_of_detectors>
-          <integer_value rank="0">100</integer_value>
-        </number_of_detectors>
-        <lagrangian/>
-        <python>
-          <string_value lines="20" type="code" language="python">def val(t):
-            import math
-
-            ret=[]
-            for i in range(100):
-                    ret.append([-2.5,(-0.495 + i * 0.01)])
-
-            return ret</string_value>
-        </python>
-      </detector_array>
-      <fail_outside_domain/>
-      <lagrangian_timestepping>
-        <subcycles>
-          <integer_value rank="0">1</integer_value>
-        </subcycles>
-        <search_tolerance>
-          <real_value rank="0">1.0e-10</real_value>
-        </search_tolerance>
-        <rk4_guided_search/>
-      </lagrangian_timestepping>
     </detectors>
   </io>
+  <particles>
+    <particle_group name="Detectors">
+      <particle_io/>
+      <particle_subgroup name="interface">
+        <initial_position>
+          <python>
+            <string_value type="code" language="python" lines="20">def val(t):
+  ret=[]
+  for i in range(100):
+    ret.append([0.0,(-0.495 + i * 0.01)])
+
+  return ret</string_value>
+          </python>
+        </initial_position>
+      </particle_subgroup>
+      <particle_subgroup name="right">
+        <initial_position>
+          <python>
+            <string_value type="code" language="python" lines="20">def val(t):
+  ret=[]
+  for i in range(100):
+    ret.append([2.5,(-0.495 + i * 0.01)])
+
+  return ret</string_value>
+          </python>
+        </initial_position>
+      </particle_subgroup>
+      <particle_subgroup name="left">
+        <initial_position>
+          <python>
+            <string_value type="code" language="python" lines="20">def val(t):
+  ret=[]
+  for i in range(100):
+    ret.append([-2.5,(-0.495 + i * 0.01)])
+
+  return ret</string_value>
+          </python>
+        </initial_position>
+      </particle_subgroup>
+    </particle_group>
+    <moving_outside_domain>
+      <delete_outside_domain/>
+    </moving_outside_domain>
+    <lagrangian_timestepping>
+      <subcycles>
+        <integer_value rank="0">1</integer_value>
+      </subcycles>
+      <search_tolerance>
+        <real_value rank="0">1.0e-10</real_value>
+      </search_tolerance>
+      <rk4_guided_search/>
+    </lagrangian_timestepping>
+  </particles>
   <timestepping>
     <current_time>
       <real_value rank="0">0</real_value>
@@ -151,7 +146,7 @@
           <mesh name="CoordinateMesh"/>
           <value name="WholeMesh">
             <constant>
-              <real_value shape="2" dim1="dim" rank="1">0 -1</real_value>
+              <real_value rank="1" dim1="dim" shape="2">0 -1</real_value>
             </constant>
           </value>
           <output/>
@@ -161,6 +156,9 @@
           <detectors>
             <exclude_from_detectors/>
           </detectors>
+          <particles>
+            <exclude_from_particles/>
+          </particles>
         </prescribed>
       </vector_field>
     </gravity>
@@ -184,7 +182,7 @@
         </linear>
       </fluids>
     </equation_of_state>
-    <scalar_field name="Pressure" rank="0">
+    <scalar_field rank="0" name="Pressure">
       <prognostic>
         <mesh name="PressureMesh"/>
         <spatial_discretisation>
@@ -221,13 +219,16 @@
         <detectors>
           <include_in_detectors/>
         </detectors>
+        <particles>
+          <exclude_from_particles/>
+        </particles>
         <steady_state>
           <include_in_steady_state/>
         </steady_state>
         <consistent_interpolation/>
       </prognostic>
     </scalar_field>
-    <scalar_field name="Density" rank="0">
+    <scalar_field rank="0" name="Density">
       <diagnostic>
         <algorithm name="Internal" material_phase_support="multiple"/>
         <mesh name="VelocityMesh"/>
@@ -239,12 +240,15 @@
         <detectors>
           <include_in_detectors/>
         </detectors>
+        <particles>
+          <exclude_from_particles/>
+        </particles>
         <steady_state>
           <include_in_steady_state/>
         </steady_state>
       </diagnostic>
     </scalar_field>
-    <vector_field name="Velocity" rank="1">
+    <vector_field rank="1" name="Velocity">
       <prognostic>
         <mesh name="VelocityMesh"/>
         <equation name="Boussinesq"/>
@@ -260,6 +264,7 @@
             <stress_terms>
               <tensor_form/>
             </stress_terms>
+            <buoyancy/>
           </continuous_galerkin>
           <conservative_advection>
             <real_value rank="0">0</real_value>
@@ -293,12 +298,12 @@
         </solver>
         <initial_condition name="WholeMesh">
           <constant>
-            <real_value shape="2" dim1="dim" rank="1">0 0</real_value>
+            <real_value rank="1" dim1="dim" shape="2">0 0</real_value>
           </constant>
         </initial_condition>
         <boundary_conditions name="LeftRight">
           <surface_ids>
-            <integer_value shape="2" rank="1">15 16</integer_value>
+            <integer_value rank="1" shape="2">15 16</integer_value>
           </surface_ids>
           <type name="dirichlet">
             <align_bc_with_cartesian>
@@ -312,7 +317,7 @@
         </boundary_conditions>
         <boundary_conditions name="TopBottom">
           <surface_ids>
-            <integer_value shape="2" rank="1">13 14</integer_value>
+            <integer_value rank="1" shape="2">13 14</integer_value>
           </surface_ids>
           <type name="dirichlet">
             <align_bc_with_cartesian>
@@ -334,6 +339,9 @@
               </isotropic>
             </value>
             <output/>
+            <particles>
+              <exclude_from_particles/>
+            </particles>
           </prescribed>
         </tensor_field>
         <output/>
@@ -352,16 +360,19 @@
         <detectors>
           <include_in_detectors/>
         </detectors>
+        <particles>
+          <exclude_from_particles/>
+        </particles>
         <steady_state>
           <include_in_steady_state/>
         </steady_state>
         <adaptivity_options>
           <absolute_measure>
-            <vector_field name="InterpolationErrorBound" rank="1">
+            <vector_field rank="1" name="InterpolationErrorBound">
               <prescribed>
                 <value name="WholeMesh">
                   <constant>
-                    <real_value shape="2" dim1="dim" rank="1">0.001 0.001</real_value>
+                    <real_value rank="1" dim1="dim" shape="2">0.001 0.001</real_value>
                   </constant>
                 </value>
                 <output/>
@@ -371,6 +382,9 @@
                 <detectors>
                   <exclude_from_detectors/>
                 </detectors>
+                <particles>
+                  <exclude_from_particles/>
+                </particles>
               </prescribed>
             </vector_field>
           </absolute_measure>
@@ -378,7 +392,7 @@
         <consistent_interpolation/>
       </prognostic>
     </vector_field>
-    <scalar_field name="Temperature" rank="0">
+    <scalar_field rank="0" name="Temperature">
       <prognostic>
         <mesh name="VelocityMesh"/>
         <equation name="AdvectionDiffusion"/>
@@ -421,7 +435,7 @@
         </solver>
         <initial_condition name="Left_region">
           <region_ids>
-            <integer_value shape="1" rank="1">17</integer_value>
+            <integer_value rank="1" shape="1">17</integer_value>
           </region_ids>
           <constant>
             <real_value rank="0">0.5</real_value>
@@ -429,7 +443,7 @@
         </initial_condition>
         <initial_condition name="Right_region">
           <region_ids>
-            <integer_value shape="1" rank="1">18</integer_value>
+            <integer_value rank="1" shape="1">18</integer_value>
           </region_ids>
           <constant>
             <real_value rank="0">-0.5</real_value>
@@ -445,31 +459,34 @@
               </isotropic>
             </value>
             <output/>
+            <particles>
+              <exclude_from_particles/>
+            </particles>
           </prescribed>
         </tensor_field>
         <output/>
         <stat>
-          <surface_integral type="gradient_normal" name="HeatFlux1">
+          <surface_integral name="HeatFlux1" type="gradient_normal">
             <surface_ids>
-              <integer_value shape="1" rank="1">5</integer_value>
+              <integer_value rank="1" shape="1">5</integer_value>
             </surface_ids>
           </surface_integral>
-          <surface_integral type="gradient_normal" name="HeatFlux2">
+          <surface_integral name="HeatFlux2" type="gradient_normal">
             <surface_ids>
-              <integer_value shape="1" rank="1">6</integer_value>
+              <integer_value rank="1" shape="1">6</integer_value>
             </surface_ids>
           </surface_integral>
-          <surface_integral type="gradient_normal" name="HeatFlux3">
+          <surface_integral name="HeatFlux3" type="gradient_normal">
             <surface_ids>
-              <integer_value shape="1" rank="1">7</integer_value>
+              <integer_value rank="1" shape="1">7</integer_value>
             </surface_ids>
           </surface_integral>
-          <surface_integral type="gradient_normal" name="HeatFlux4">
+          <surface_integral name="HeatFlux4" type="gradient_normal">
             <surface_ids>
-              <integer_value shape="1" rank="1">8</integer_value>
+              <integer_value rank="1" shape="1">8</integer_value>
             </surface_ids>
           </surface_integral>
-          <surface_integral type="gradient_normal" name="Hf_Total"/>
+          <surface_integral name="Hf_Total" type="gradient_normal"/>
         </stat>
         <convergence>
           <include_in_convergence/>
@@ -477,12 +494,15 @@
         <detectors>
           <include_in_detectors/>
         </detectors>
+        <particles>
+          <exclude_from_particles/>
+        </particles>
         <steady_state>
           <include_in_steady_state/>
         </steady_state>
         <adaptivity_options>
           <absolute_measure>
-            <scalar_field name="InterpolationErrorBound" rank="0">
+            <scalar_field rank="0" name="InterpolationErrorBound">
               <prescribed>
                 <value name="WholeMesh">
                   <constant>
@@ -494,6 +514,9 @@
                 <detectors>
                   <exclude_from_detectors/>
                 </detectors>
+                <particles>
+                  <exclude_from_particles/>
+                </particles>
               </prescribed>
             </scalar_field>
           </absolute_measure>
@@ -501,7 +524,7 @@
         <consistent_interpolation/>
       </prognostic>
     </scalar_field>
-    <scalar_field name="GeostrophicPressure" rank="0">
+    <scalar_field rank="0" name="GeostrophicPressure">
       <prognostic>
         <mesh name="GeostrophicPressureMesh"/>
         <spatial_discretisation>
@@ -510,7 +533,7 @@
           </geostrophic_pressure_option>
         </spatial_discretisation>
         <reference_node name="node_1">
-          <integer_value shape="1" rank="0">1</integer_value>
+          <integer_value rank="0" shape="1">1</integer_value>
         </reference_node>
         <solver>
           <iterative_method name="cg"/>
@@ -536,13 +559,16 @@
         <detectors>
           <include_in_detectors/>
         </detectors>
+        <particles>
+          <exclude_from_particles/>
+        </particles>
         <steady_state>
           <include_in_steady_state/>
         </steady_state>
         <consistent_interpolation/>
       </prognostic>
     </scalar_field>
-    <scalar_field name="CFLNumber" rank="0">
+    <scalar_field rank="0" name="CFLNumber">
       <diagnostic>
         <algorithm name="Internal" material_phase_support="multiple"/>
         <mesh name="VelocityMesh"/>
@@ -554,6 +580,9 @@
         <detectors>
           <include_in_detectors/>
         </detectors>
+        <particles>
+          <exclude_from_particles/>
+        </particles>
         <steady_state>
           <include_in_steady_state/>
         </steady_state>
@@ -576,14 +605,14 @@
       <tensor_field name="MinimumEdgeLengths">
         <anisotropic_symmetric>
           <constant>
-            <real_value symmetric="true" dim2="dim" shape="2 2" dim1="dim" rank="2">0.0005 0 0 0.0005</real_value>
+            <real_value symmetric="true" rank="2" dim1="dim" dim2="dim" shape="2 2">0.0005 0 0 0.0005</real_value>
           </constant>
         </anisotropic_symmetric>
       </tensor_field>
       <tensor_field name="MaximumEdgeLengths">
         <anisotropic_symmetric>
           <constant>
-            <real_value symmetric="true" dim2="dim" shape="2 2" dim1="dim" rank="2">1 0 0 1</real_value>
+            <real_value symmetric="true" rank="2" dim1="dim" dim2="dim" shape="2 2">1 0 0 1</real_value>
           </constant>
         </anisotropic_symmetric>
       </tensor_field>
