@@ -1,23 +1,19 @@
-from fluidity_tools import stat_parser
-from numpy import zeros,fromfile, ones, shape
+import numpy as np
+import h5py
 
 def readstat_3d():
-    s = stat_parser("lagrangian_detectors.detectors")
+    f = h5py.File("lagrangian_detectors.particles.Steve.h5part", "r")
 
     num_detectors = 200000
-    zfill_length  = int(len(str(num_detectors)))
-    array_name    = "Steve_"
-    last_locations_error = zeros((3,num_detectors))
-    
-    for i in range(num_detectors):
-        n = i + 1
-        last_locations_error[0,i] = s[array_name+str(n).zfill(zfill_length)]['position'][0][-1]
-        last_locations_error[1,i] = s[array_name+str(n).zfill(zfill_length)]['position'][1][-1]
-        last_locations_error[2,i] = s[array_name+str(n).zfill(zfill_length)]['position'][2][-1]
-    X = fromfile('Xvals.txt',sep=' ')
-    Y = fromfile('Yvals.txt',sep=' ')
-    Z = 0.5*ones(shape(X))
-    last_locations_error[0,:] = last_locations_error[0,:] - X
-    last_locations_error[1,:] = last_locations_error[1,:] - Y
-    last_locations_error[2,:] = last_locations_error[2,:] - Z 
+    last_locations_error = np.zeros((3, num_detectors))
+    d = f["/Step#{}".format(len(f) - 1)]
+    idx = np.argsort(d["id"])
+
+    X = np.fromfile("Xvals.txt",sep=" ")
+    Y = np.fromfile("Yvals.txt",sep=" ")
+    Z = 0.5 * np.ones_like(X)
+
+    for i, (dim, ref) in enumerate(zip("xyz", (X, Y, Z))):
+        last_locations_error[i,:] = d[dim][:][idx] - ref
+
     return last_locations_error

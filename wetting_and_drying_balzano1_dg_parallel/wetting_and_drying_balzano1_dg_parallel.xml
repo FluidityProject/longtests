@@ -12,16 +12,18 @@ mpiexec fluidity balzano1_2plus1_flredecomp.flml</command_line>
 import h5py
 import numpy as np
 f = h5py.File('balzano1_2plus1.detectors.h5part', 'r')
-n = len(f)-1
+d = f["/Step#{}".format(len(f) - 1)]
+idx = np.argsort(d["id"])
 
-velocity = np.vstack([f[f'/Step#{n}/water%Velocity%{d}'][:] for d in 'xyz'])
+velocity = np.vstack([d[f'water%Velocity%{dim}'][:][idx] for dim in 'xyz'])
     </variable>
     <variable name="wetting_drying_alpha" language="python">
 import h5py
 import numpy as np
 f = h5py.File('balzano1_2plus1.detectors.h5part', 'r')
-n = len(f)-1
-wetting_drying_alpha = f[f'/Step#{n}/water%WettingDryingAlpha'][:]
+d = f["/Step#{}".format(len(f) - 1)]
+idx = np.argsort(d["id"])
+wetting_drying_alpha = d["water%WettingDryingAlpha"][:][idx]
     </variable>
     <variable name="ElapsedTime" language="python">
 import h5py

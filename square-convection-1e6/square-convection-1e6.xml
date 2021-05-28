@@ -77,9 +77,12 @@ for i, coord in enumerate(coords):
     psi_max = (coord[:2], abs(psi[i]))
     </variable>
     <variable name = "psi_mid" language = "python">
-import fluidity_tools
-s = fluidity_tools.stat_parser("square-convection.detectors")
-psi_mid = s["Fluid"]["StreamFunction"]["MidPoint"][-1]
+import h5py
+import numpy as np
+f = h5py.File("square-convection.detectors.h5part", "r")
+d = f["/Step#{}".format(len(f) - 1)]
+det_id, = np.where(d["id"][:] == f.attrs["MidPoint%ids"][0])
+psi_mid = d["Fluid%StreamFunction"][det_id[0]]
     </variable>
     <variable name = "left_boundary_average_nu" language = "python">
 import fluidity_tools
@@ -87,9 +90,12 @@ s = fluidity_tools.stat_parser("square-convection.stat")
 left_boundary_average_nu = s["Fluid"]["Temperature"]["surface_integral%LeftH"][-1]
     </variable>
     <variable name = "left_boundary_mid_height_nu" language = "python">
-import fluidity_tools
-s = fluidity_tools.stat_parser("square-convection.detectors")
-left_boundary_mid_height_nu = -s["Fluid"]["TemperatureGradient"]["LeftBoundaryMidHeight"][0][-1]
+import h5py
+import numpy as np
+f = h5py.File("square-convection.detectors.h5part", "r")
+d = f["/Step#{}".format(len(f) - 1)]
+det_id, = np.where(d["id"][:] == f.attrs["LeftBoundaryMidHeight%ids"][0])
+left_boundary_mid_height_nu = d["Fluid%TemperatureGradient%x"][det_id[0]]
     </variable>
     <variable name = "left_boundary_nus" language = "python">
 import fluidity.diagnostics.fluiditytools as fluidity_tools
@@ -162,7 +168,7 @@ fluidity_tools.compare_variable(left_boundary_average_nu, 8.800, 0.03)
     </test>
     <test name = "Left boundary mid-height Nu benchmark" language = "python">
 import fluidity_tools
-fluidity_tools.compare_variable(left_boundary_mid_height_nu, 8.799, 0.1)
+fluidity_tools.compare_variable(left_boundary_mid_height_nu, -8.799, 0.1)
     </test>
     <test name = "Final left boundary Nu extrema benchmarks" language = "python">
 import fluidity_tools
