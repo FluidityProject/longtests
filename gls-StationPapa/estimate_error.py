@@ -76,7 +76,7 @@ def calc_mld(files,mld_depths):
        
 
         # sorted the array based on depth
-        xyz_data = vtktools.arr(xyz_data)
+        xyz_data = numpy.array(xyz_data)
         III = argsort(xyz_data[:,2])
         xyz_data_sorted = xyz_data[III,:]
 

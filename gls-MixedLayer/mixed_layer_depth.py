@@ -57,7 +57,7 @@ for file in filelist:
       if( abs(pos[i,0] - x0) < 0.1 and abs(pos[i,1] - y0) < 0.1):
          xyzkk.append((pos[i,0],pos[i,1],-pos[i,2],(kk[i])))
 
-   xyzkkarr = vtktools.arr(xyzkk)
+   xyzkkarr = array(xyzkk)
    III = argsort(xyzkkarr[:,2])
    xyzkkarrsort = xyzkkarr[III,:]
    ggg = ((xyzkkarrsort[:,3])>tke0).nonzero()

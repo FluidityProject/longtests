@@ -8,6 +8,7 @@ import commands
 import matplotlib.pyplot as plt
 import getopt
 import csv
+import numpy
 
 from scipy.special import erf
 from numpy import poly1d
@@ -257,7 +258,7 @@ def probe_fs(filename, coords, t):
         #zip(X,Y,Z)
         #pts = zip(X,Y,Z)
         print "coords: ", coords
-        pts = vtktools.arr([coords])
+        pts = numpy.array([coords])
         # create arrays of velocity and temperature values at the desired points
         fs = vtu.ProbeData(pts, 'FreeSurface')
         return fs[0]
@@ -279,7 +280,7 @@ def csv_reader(filename, coords, t):
         #zip(X,Y,Z)
         #pts = zip(X,Y,Z)
         print "coords: ", coords
-        pts = vtktools.arr([coords])
+        pts = numpy.array([coords])
         # create arrays of velocity and temperature values at the desired points
         fs = vtu.ProbeData(pts, 'FreeSurface')
         return fs[0]
