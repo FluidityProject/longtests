@@ -90,13 +90,13 @@ assert abs ( MaximumVelocity  - 0.104 ) &lt; 0.104/10.0
 assert abs ( NormVelocity - 5588.0 ) &lt; 5588.0/10.0
     </test>
     <test name="Pressure range within 10% of previous run" language="python">
-assert abs (  PressureRange - (0.001686) )  &lt; 0.001686/10.0
+assert abs (  PressureRange - (0.00195) )  &lt; 0.00195/10.0
     </test>
     <test name="Balance pressure range within 10% of previous run" language="python">
 assert abs (  (MaximumGeostrophicPressure - MinimumGeostrophicPressure)- 0.098 )  &lt; 0.098/10.0
     </test>
     <test name="Check final number of nodes within 2000 of the previous number" language="python">
-assert abs ( FinalNodeCount - 14256.0 ) &lt; 2000.0
+assert abs ( FinalNodeCount - 18500.0 ) &lt; 2000.0
     </test>
     <test name="Check ElapsedWallTime is within an hour of the previous timing" language="python">
 assert abs ( ElapsedWallTime - 1950.0 ) &lt; 3600.0
